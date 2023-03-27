@@ -1,6 +1,6 @@
 /* Background du bouton */
 .nav-button:active {
-    background-image: url('../images/NavButton/button-bg-gif.gif');
+    background-image: url('../../images/NavButton/button-bg-gif.gif');
     font-weight: bold;
     background-size: 230px;
     text-shadow: black 0px 0px 10px
@@ -8,13 +8,13 @@
 
 /* Icone du bouton */
 .nav-button-icon{
-    background-image: url('../images/NavButton/button-arrow-reversed.png');
+    background-image: url('../../images/NavButton/button-arrow-reversed.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: 16px;
 }
 
 .nav-button:hover .nav-button-icon{
-    background-image: url('../images/NavButton/button-arrow.png');
+    background-image: url('../../images/NavButton/button-arrow.png');
     background-size: 24px;
 }
