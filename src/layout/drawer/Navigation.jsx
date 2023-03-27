@@ -11,9 +11,9 @@ const Navigation = () => {
       }}
     >
       <NavButton>FRÉZO !</NavButton>
-      <NavButton>Frézo Learning</NavButton>
       <NavButton>Frézo Writer</NavButton>
       <NavButton>Frézo Translate</NavButton>
+      <NavButton>Frézo Learning</NavButton>
       <NavButton>Frezo Editor</NavButton>
       <NavButton>About</NavButton>
     </div>
