@@ -1,0 +1,18 @@
+/* Background du bouton */
+.nav-button:active {
+    background-image: url('../images/NavButton/button-bg-gif.gif');
+    font-weight: bold;
+}
+
+/* Icone du bouton */
+.nav-button-icon{
+    background-image: url('../images/NavButton/button-arrow-reversed.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 16px;
+}
+
+.nav-button:hover .nav-button-icon{
+    background-image: url('../images/NavButton/button-arrow.png');
+    background-size: 24px;
+}
