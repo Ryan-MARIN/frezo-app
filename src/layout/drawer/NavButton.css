@@ -2,6 +2,8 @@
 .nav-button:active {
     background-image: url('../images/NavButton/button-bg-gif.gif');
     font-weight: bold;
+    background-size: 230px;
+    text-shadow: black 0px 0px 10px
 }
 
 /* Icone du bouton */

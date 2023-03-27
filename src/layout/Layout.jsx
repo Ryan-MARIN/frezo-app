@@ -1,6 +1,7 @@
 import React from "react";
-import background from "./images/background.png";
+import background from "../images/background.png";
 import Drawer from './drawer/Drawer';
+import Body from "./body/Body";
 
 const Layout = () => {
   return (
@@ -12,10 +13,11 @@ const Layout = () => {
         backgroundImage: `url(${background})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
+        overflow: "hidden",
       }}
     >
       <Drawer/>
-      <div style={{display:"flex",flexGrow:1, alignItems:"center", justifyContent:"center"}}>a</div>
+      <Body/>
     </div>
   );
 };

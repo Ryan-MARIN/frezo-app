@@ -11,16 +11,17 @@ const Drawer = () => {
         flexDirection: "column",
       }}
     >
-      <div
+      <a
         style={{
           display: "flex",
           margin: "0px",
           padding: "10px",
           backgroundColor: "#0006",
         }}
+        href="/"
       >
         <Logo />
-      </div>
+      </a>
       <div
         style={{
           display: "flex",
@@ -30,6 +31,7 @@ const Drawer = () => {
           color: "white",
           width: "100%",
           flexGrow: 1,
+          overflow: "auto",
         }}
       >
         <Navigation />

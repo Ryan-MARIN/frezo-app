@@ -3,7 +3,7 @@ import NavButton from "./NavButton";
 
 const Navigation = () => {
   return (
-    <div
+    <nav
       className="navigation"
       style={{
         display: "flex",
@@ -16,7 +16,7 @@ const Navigation = () => {
       <NavButton>Frézo Learning</NavButton>
       <NavButton>Frezo Editor</NavButton>
       <NavButton>About</NavButton>
-    </div>
+    </nav>
   );
 };
 
