@@ -14,8 +14,8 @@ const Logo = () => {
         fill="white"
       />
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M39.7241 0H72.8276V32.7273H66.2069V39.2727H72.8276V72H59.5862V39.2727H52.9655V72H39.7241V0ZM59.5862 32.7273V6.54545H52.9655V32.7273H59.5862Z"
         fill="white"
       />
@@ -24,8 +24,8 @@ const Logo = () => {
         fill="white"
       />
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M158.897 72H192V0H158.897V72ZM178.759 65.4545H172.138V6.54545H178.759V65.4545Z"
         fill="white"
       />

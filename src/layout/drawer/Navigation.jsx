@@ -10,12 +10,12 @@ const Navigation = () => {
         flexDirection: "column",
       }}
     >
-      <NavButton>FRÉZO !</NavButton>
-      <NavButton>Frézo Writer</NavButton>
-      <NavButton>Frézo Translate</NavButton>
-      <NavButton>Frézo Learning</NavButton>
-      <NavButton>Frezo Editor</NavButton>
-      <NavButton>About</NavButton>
+        <NavButton link='/home'>FRÉZO !</NavButton>
+        <NavButton link='/writer'>Frézo Writer</NavButton>
+        <NavButton link='/translate'>Frézo Translate</NavButton>
+        <NavButton link='/learning'>Frézo Learning</NavButton>
+        <NavButton link='/editor'>Frezo Editor</NavButton>
+        <NavButton link='/about'>About</NavButton>
     </nav>
   );
 };

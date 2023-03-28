@@ -1,5 +1,6 @@
 import React from "react";
 import "./Body.css";
+import {Outlet} from "react-router-dom";
 
 const Body = () => {
   return (
@@ -40,27 +41,7 @@ const Body = () => {
         }}
       >
         <div style={{ padding: "0px 20px" }}>
-          <p>test</p>
-          <p>test</p>
-          <p>test</p>
-          <p>test</p>
-          <p>test</p>
-          <p>test</p>
-          <p>test</p>
-          <p>test</p>
-          <p>test</p>
-          <p>test</p>
-          <p>test</p>
-          <p>test</p>
-          <p>test</p>
-          <p>test</p>
-          <p>test</p>
-          <p>test</p>
-          <p>test</p>
-          <p>test</p>
-          <p>test</p>
-          <p>test</p>
-          <p>test</p>
+          <Outlet/>
         </div>
       </div>
     </div>
