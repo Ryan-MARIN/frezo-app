@@ -2,10 +2,12 @@ import React from "react";
 import Logo from "./Logo";
 import Copyright from "./Copyright";
 import Navigation from "./Navigation";
+import "./Drawer.css";
 
 const Drawer = () => {
   return (
     <div
+    className="drawer"
       style={{
         display: "flex",
         flexDirection: "column",

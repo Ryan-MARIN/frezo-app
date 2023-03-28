@@ -1,8 +1,10 @@
 import React from "react";
+import "./Body.css";
 
 const Body = () => {
   return (
     <div
+      className="body"
       style={{
         display: "flex",
         flexDirection: "column",
@@ -14,8 +16,8 @@ const Body = () => {
     >
       <div
         style={{
-          color:"white",
-          backgroundColor:"black",
+          color: "white",
+          backgroundColor: "black",
           marginBottom: "10px",
         }}
       >
