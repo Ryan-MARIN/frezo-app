@@ -3,6 +3,7 @@ import Logo from "./Logo";
 import Copyright from "./Copyright";
 import Navigation from "./Navigation";
 import "./Drawer.css";
+import {Link} from "react-router-dom";
 
 const Drawer = () => {
   return (
@@ -13,17 +14,17 @@ const Drawer = () => {
         flexDirection: "column",
       }}
     >
-      <a
+        <Link
         style={{
           display: "flex",
           margin: "0px",
           padding: "10px",
           backgroundColor: "#0006",
         }}
-        href="/"
-      >
-        <Logo />
-      </a>
+        to="/"
+        >
+            <Logo />
+        </Link>
       <div
         style={{
           display: "flex",
