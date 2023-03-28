@@ -28,7 +28,10 @@
 }
 
 /* Style pour la scrollbar de Firefox */
+.body * {
+  scrollbar-color: transparent transparent;
+}
+
 .body:hover * {
-  scrollbar-width: large;
-  scrollbar-color: white black;
+  scrollbar-color: black white;
 }
