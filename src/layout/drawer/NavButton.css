@@ -1,5 +1,5 @@
-/* Background du bouton */
-.nav-button:active {
+/* Background du bouton actif */
+.nav-button.active {
     background-image: url('../../images/NavButton/button-bg-gif.gif');
     font-weight: bold;
     background-size: 230px;
@@ -14,7 +14,7 @@
     background-size: 16px;
 }
 
-.nav-button:hover .nav-button-icon{
+.nav-button.active .nav-button-icon, .nav-button:hover .nav-button-icon{
     background-image: url('../../images/NavButton/button-arrow.png');
     background-size: 24px;
 }

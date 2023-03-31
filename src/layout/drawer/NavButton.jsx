@@ -1,11 +1,11 @@
 import React from "react";
 import "./NavButton.css";
-import {Link} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 
 const NavButton = (props) => {
   const { children, link } = props;
   return (
-    <Link
+    <NavLink
       className="nav-button"
       style={{
         height: "80px",
@@ -19,7 +19,7 @@ const NavButton = (props) => {
     >
       <div className="nav-button-icon" style={{ width: "30px", height:"100%", padding:"0px 10px" }}/>
       {children}
-    </Link>
+    </NavLink>
   );
 };
 
