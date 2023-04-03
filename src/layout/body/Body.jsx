@@ -37,10 +37,10 @@ const Body = () => {
           backgroundColor: "white",
           position: "inherit",
           top: "0px",
-          flexWrap: "wrap",
+          flexWrap: "wrap"
         }}
       >
-        <div style={{ padding: "0px 20px" }}>
+        <div style={{ padding: "20px" }}>
           <Outlet/>
         </div>
       </div>
