@@ -1,6 +1,6 @@
 import React from "react";
 import "./Body.css";
-import {Outlet} from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 const Body = () => {
   return (
@@ -37,12 +37,10 @@ const Body = () => {
           backgroundColor: "white",
           position: "inherit",
           top: "0px",
-          flexWrap: "wrap"
+          flexWrap: "wrap",
         }}
       >
-        <div style={{ padding: "20px" }}>
-          <Outlet/>
-        </div>
+        <Outlet />
       </div>
     </div>
   );
