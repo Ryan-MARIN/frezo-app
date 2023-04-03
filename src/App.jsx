@@ -9,6 +9,12 @@ import Home from "./pages/home/Home";
 import FrezoTranslate from "./pages/frezo-translate/FrezoTranslate";
 import FrezoLearning from "./pages/frezo-learning/FrezoLearning";
 import About from "./pages/about/About";
+import Chapter1 from "./pages/frezo-learning/chapter1/Chapter1";
+import Chapter2 from "./pages/frezo-learning/chapter2/Chapter2";
+import Chapter4 from "./pages/frezo-learning/chapter4/Chapter4";
+import Chapter3 from "./pages/frezo-learning/chapter3/Chapter3";
+import Chapter5 from "./pages/frezo-learning/chapter5/Chapter5";
+import ChapterLayout from './pages/frezo-learning/ChapterLayout';
 
 function App() {
   return (
@@ -35,6 +41,12 @@ function App() {
             <Route path="/learning" element={<FrezoLearning />} />
             <Route path="/editor" element={<FrezoEditor />} />
             <Route path="/about" element={<About />} />
+
+            <Route path="/learning/chapter-1" element={<ChapterLayout><Chapter1 /></ChapterLayout>} />
+            <Route path="/learning/chapter-2" element={<ChapterLayout><Chapter2 /></ChapterLayout>} />
+            <Route path="/learning/chapter-3" element={<ChapterLayout><Chapter3 /></ChapterLayout>} />
+            <Route path="/learning/chapter-4" element={<ChapterLayout><Chapter4 /></ChapterLayout>} />
+            <Route path="/learning/chapter-5" element={<ChapterLayout><Chapter5 /></ChapterLayout>} />
           </Route>
         </Routes>
       </BrowserRouter>

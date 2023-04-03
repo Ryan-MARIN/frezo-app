@@ -1,0 +1,15 @@
+.info{
+    background-color:lightskyblue;
+}
+
+.warning{
+    background-color:khaki;
+}
+
+.success{
+    background-color: greenyellow;
+}
+
+.error{
+    background-color: lightcoral;
+}
