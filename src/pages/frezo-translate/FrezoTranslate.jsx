@@ -23,8 +23,6 @@ const FrezoTranslate = () => {
         })
             .then((response) => response.json())
             .then((response) => {
-                console.log(response);
-                console.log(response['ipa']);
                 setTranslatedTextInfo(response);
             })
             .catch(err => {
