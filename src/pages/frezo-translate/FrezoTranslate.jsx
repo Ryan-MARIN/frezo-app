@@ -12,7 +12,7 @@ const FrezoTranslate = () => {
     React.useEffect(() => {
         if (Object.keys(translatedTextInfo).length > 0) {
             setAPIPhonetics(translatedTextInfo['ipa']);
-            setAPFPhonetics(phoneticApiToApf(translatedTextInfo['ipa']).replace(/ˈ|ˌ|[^-]-[^-]/g, '').replace(/-+/g, '-'));
+            setAPFPhonetics(phoneticApiToApf(translatedTextInfo['ipa']).replace(/ˈ|ˌ|-(?=\s)|-[^-]/g, '').replace(/-+/g, '-'));
         }
     },[translatedTextInfo]);
 
