@@ -14,7 +14,7 @@ const FrezoTranslate = () => {
             setAPIPhonetics(translatedTextInfo['ipa']);
             setAPFPhonetics(phoneticApiToApf(translatedTextInfo['ipa']).replace(/ˈ|ˌ|[^-]-[^-]/g, '').replace(/-+/g, '-'));
         }
-    });
+    },[translatedTextInfo]);
 
     const phoneticApiToApf = (apiText) => {
         const replaceAll = (str, find, replace) => {
