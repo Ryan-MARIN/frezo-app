@@ -1,5 +1,6 @@
 import React from "react";
 import "../ChapterLayout.css";
+import Exercice1 from "./Exercice1";
 
 const Chapter1 = () => {
   return (
@@ -43,6 +44,7 @@ const Chapter1 = () => {
           </tbody>
         </table>
       </article>
+      <Exercice1/>
     </div>
   );
 };
