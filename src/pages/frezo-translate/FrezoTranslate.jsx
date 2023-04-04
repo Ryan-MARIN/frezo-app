@@ -1,5 +1,8 @@
 import React from 'react'
 import translateJson from '../../ressources/api-apf.json'
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import {Stack} from "@mui/material";
 
 const FrezoTranslate = () => {
     const [isLoading, setIsLoading] = React.useState(false);
@@ -61,24 +64,33 @@ const FrezoTranslate = () => {
     }
 
     return (
-        <div>
+        <div style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            flexDirection: 'column',
+            height: '100%'
+        }}>
             <h1>Frezo Translate</h1>
-            <div>
-                <input
+            <Stack alignItems='center' spacing={2}>
+                <TextField
+                    variant="outlined"
                     value={toTranslateText}
                     placeholder='Entrer votre texte à traduire'
                     onChange={e => setToTranslateText(e.target.value)}
                 />
-                <button onClick={()=>{searchInfo(toTranslateText)}}>Traduire</button>
-            </div>
+                <div>
+                    <Button variant="contained" onClick={()=>{searchInfo(toTranslateText)}}>Traduire</Button>
+                </div>
+            </Stack>
             <div>
                 {isLoading ?
                     <span>Loading...</span>
                     :
                     <div>
                         <p>
-                            API: {apiPhonetics} <br/>
-                            Frézo: {apfPhonetics}
+                            <b>API : </b>{apiPhonetics} <br/>
+                            <b>Frézo : </b>{apfPhonetics}
                         </p>
                     </div>
                 }
