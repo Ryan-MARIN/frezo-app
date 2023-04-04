@@ -3,6 +3,7 @@ import translateJson from '../../ressources/api-apf.json'
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import {Stack} from "@mui/material";
+import "./FrezoTranslate.css";
 
 const FrezoTranslate = () => {
     const [isLoading, setIsLoading] = React.useState(false);
@@ -15,7 +16,7 @@ const FrezoTranslate = () => {
     React.useEffect(() => {
         if (Object.keys(translatedTextInfo).length > 0) {
             setAPIPhonetics(translatedTextInfo['ipa']);
-            setAPFPhonetics(phoneticApiToApf(translatedTextInfo['ipa']).replace(/ˈ|ˌ|-(?=\s)|-[^-]/g, '').replace(/-+/g, '-'));
+            setAPFPhonetics(phoneticApiToApf(translatedTextInfo['ipa']).replace(/ˈ|ˌ|-(?=\s)|-[^-]/g, '').replace(/-+/g, '-').replace(/[\u0303]/g, ''));
         }
     },[translatedTextInfo]);
 
@@ -89,8 +90,8 @@ const FrezoTranslate = () => {
                     :
                     <div>
                         <p>
-                            <b>API : </b>{apiPhonetics} <br/>
-                            <b>Frézo : </b>{apfPhonetics}
+                            <div><b>API : </b>{apiPhonetics}</div>
+                            <div className="frezo"><b>Frézo : </b>{apfPhonetics}</div>
                         </p>
                     </div>
                 }

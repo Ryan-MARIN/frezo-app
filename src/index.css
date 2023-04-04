@@ -1,8 +1,19 @@
+@font-face {
+  font-family: "frezo";
+  src: url("./ressources/frezo.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 * {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
     font-size: 20px;
+}
+
+.frezo {
+    font-family: 'frezo', sans-serif;
 }
 
 body {
