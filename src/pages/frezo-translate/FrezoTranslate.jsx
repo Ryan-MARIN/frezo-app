@@ -21,10 +21,10 @@ const FrezoTranslate = () => {
             return str.replace(new RegExp(find, 'g'), replace);
         };
 
-        Object.keys(translateJson).forEach((key) => {
-            Object.keys(translateJson[key]).forEach((subKey) => {
+        Object.keys(translateJson['api-apf-frezo']).forEach((key) => {
+            Object.keys(translateJson['api-apf-frezo'][key]).forEach((subKey) => {
                 const find = subKey;
-                const replace = translateJson[key][subKey][1];
+                const replace = translateJson['api-apf-frezo'][key][subKey][1];
                 apiText = replaceAll(apiText, find, replace);
             });
         });
