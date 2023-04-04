@@ -1,12 +1,40 @@
 import React from 'react'
+import translateJson from '../../ressources/api-apf.json'
 
 const FrezoTranslate = () => {
     const [isLoading, setIsLoading] = React.useState(false);
     const [toTranslateText, setToTranslateText] = React.useState('')
     const [translatedTextInfo, setTranslatedTextInfo] = React.useState({});
+    const [apiPhonetics, setAPIPhonetics] = React.useState('');
+    const [apfPhonetics, setAPFPhonetics] = React.useState('');
     const apiLink = 'https://api2.unalengua.com/ipav3';
 
-    const translate = (toTranslate) => {
+    React.useEffect(() => {
+        if (Object.keys(translatedTextInfo).length > 0) {
+            setAPIPhonetics(translatedTextInfo['ipa']);
+            setAPFPhonetics(phoneticApiToApf(translatedTextInfo['ipa']));
+        }
+    });
+
+    const phoneticApiToApf = (apiText) => {
+        // Remplace chaque occurrence d'une clé dans la chaîne de caractères par sa valeur correspondante
+        const replaceAll = (str, find, replace) => {
+            return str.replace(new RegExp(find, 'g'), replace);
+        };
+
+        // Parcourt chaque clé du JSON et remplace la clé par sa valeur correspondante dans la chaîne de caractères
+        Object.keys(translateJson).forEach((key) => {
+            Object.keys(translateJson[key]).forEach((subKey) => {
+                const find = subKey;
+                const replace = translateJson[key][subKey][1];
+                apiText = replaceAll(apiText, find, replace);
+            });
+        });
+
+        return apiText;
+    }
+
+    const searchInfo = (toTranslate) => {
         setTranslatedTextInfo({});
         setIsLoading(true);
         fetch(apiLink, {
@@ -18,7 +46,7 @@ const FrezoTranslate = () => {
             body: JSON.stringify({
                 "text":toTranslate,
                 "lang":"fr-CA",
-                "mode":true
+                "mode":false
             })
         })
             .then((response) => response.json())
@@ -31,26 +59,32 @@ const FrezoTranslate = () => {
             .finally(() => {
                 setIsLoading(false);
             });
+
     }
 
     return (
         <div>
             <h1>Frezo Translate</h1>
-            <p>
+            <div>
                 <input
                     value={toTranslateText}
                     placeholder='Entrer votre texte à traduire'
                     onChange={e => setToTranslateText(e.target.value)}
                 />
-                <button onClick={()=>{translate(toTranslateText)}}>Traduire</button>
-            </p>
-            <p>
+                <button onClick={()=>{searchInfo(toTranslateText)}}>Traduire</button>
+            </div>
+            <div>
                 {isLoading ?
                     <span>Loading...</span>
                     :
-                    <span>En phonétique: {translatedTextInfo['ipa']}</span>
+                    <div>
+                        <p>
+                            API: {apiPhonetics} <br/>
+                            Frézo: {apfPhonetics}
+                        </p>
+                    </div>
                 }
-            </p>
+            </div>
         </div>
     )
 }
