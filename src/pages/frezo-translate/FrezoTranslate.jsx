@@ -23,9 +23,10 @@ const ipaToFrezo = (apiText) => {
   apiText = apiText.replace(/ã/g, "â").replace(/ʊ/g, "u").replace(/ɡ/g, "g");
 
   // Retrait des caractères phonétiques spéciaux
-  apiText = apiText
-    .replace(/͡|ˈ|ˌ|-(?=\s)|-[^-]|ː|[\u0303]/g, "")
-    .replace(/-+/g, "-");
+  apiText = apiText.replace(/͡|ˈ|ˌ|ː|-|[\u0303]/g, "").replace(/-+/g, "-");
+
+  // Reproduction des traits-d'unions
+  apiText = apiText.replace(/–/g, "-");
 
   return apiText;
 };
@@ -55,7 +56,7 @@ const FrezoTranslate = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        text: toTranslate.replace(/-/g, "--"),
+        text: toTranslate.replace(/-/g, "—"),
         lang: "fr-CA",
         mode: false,
       }),
