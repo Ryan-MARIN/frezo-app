@@ -12,17 +12,15 @@ const FrezoTranslate = () => {
     React.useEffect(() => {
         if (Object.keys(translatedTextInfo).length > 0) {
             setAPIPhonetics(translatedTextInfo['ipa']);
-            setAPFPhonetics(phoneticApiToApf(translatedTextInfo['ipa']));
+            setAPFPhonetics(phoneticApiToApf(translatedTextInfo['ipa']).replace(/ˈ|ˌ|[^-]-[^-]/g, '').replace(/-+/g, '-'));
         }
     });
 
     const phoneticApiToApf = (apiText) => {
-        // Remplace chaque occurrence d'une clé dans la chaîne de caractères par sa valeur correspondante
         const replaceAll = (str, find, replace) => {
             return str.replace(new RegExp(find, 'g'), replace);
         };
 
-        // Parcourt chaque clé du JSON et remplace la clé par sa valeur correspondante dans la chaîne de caractères
         Object.keys(translateJson).forEach((key) => {
             Object.keys(translateJson[key]).forEach((subKey) => {
                 const find = subKey;
@@ -44,7 +42,7 @@ const FrezoTranslate = () => {
                 'Content-Type':'application/json'
             },
             body: JSON.stringify({
-                "text":toTranslate,
+                "text":toTranslate.replace(/-/g, '--'),
                 "lang":"fr-CA",
                 "mode":false
             })
