@@ -2,7 +2,6 @@ import React from "react";
 import phonems from "../../ressources/phonems.json";
 import TextField from "@mui/material/TextField";
 import { Stack } from "@mui/material";
-import "./FrezoTranslate.css";
 
 const ipaToFrezo = (apiText) => {
   const replaceAll = (str, find, replace) => {
