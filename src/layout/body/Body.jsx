@@ -17,18 +17,6 @@ const Body = () => {
     >
       <div
         style={{
-          color: "white",
-          backgroundColor: "black",
-          marginBottom: "10px",
-        }}
-      >
-        <h1 style={{ textAlign: "center", margin: "10px 20px" }}>
-          Titre de la page
-        </h1>
-      </div>
-
-      <div
-        style={{
           display: "flex",
           flexDirection: "column",
           flexGrow: 1,
