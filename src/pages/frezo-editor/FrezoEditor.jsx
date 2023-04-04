@@ -87,6 +87,17 @@ function FrezoEditor() {
     setEraseMode(!eraseMode);
   }
 
+  function handleSave() {
+    const columns = [];
+    for (let x = 0; x < 11; x++) {
+      const column = [];
+      for (let y = 0; y < 7; y++) {
+        column.push(grid[x][y] ? 1 : 0);
+      }
+      columns.push(column);
+    }
+    console.log(columns); // TODO: replace with actual save function
+  }
 
 return (
 <div>
@@ -100,6 +111,7 @@ return (
    />
 <button type="radio" onClick={handleReset}>Reset</button>
 <button onClick={handleErase}>Erase</button>
+<button onClick={handleSave}>Save</button>
 </div>
 );
 }
