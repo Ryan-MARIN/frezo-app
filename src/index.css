@@ -13,7 +13,7 @@
 }
 
 .frezo {
-    font-family: 'frezo', sans-serif;
+    font-family: 'frezo', sans-serif !important;
 }
 
 body {
@@ -37,8 +37,8 @@ h1 {
 }
 
 ::-webkit-scrollbar {
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
 }
 
 ::-webkit-scrollbar-track {

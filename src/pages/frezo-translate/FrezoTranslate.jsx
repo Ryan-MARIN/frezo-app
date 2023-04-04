@@ -1,103 +1,110 @@
-import React from 'react'
-import translateJson from '../../ressources/api-apf.json'
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import {Stack} from "@mui/material";
+import React from "react";
+import phonems from "../../ressources/phonems.json";
+import TextField from "@mui/material/TextField";
+import { Stack } from "@mui/material";
 import "./FrezoTranslate.css";
 
+const ipaToFrezo = (apiText) => {
+  const replaceAll = (str, find, replace) => {
+    return str.replace(new RegExp(find, "g"), replace);
+  };
+
+  // Conversions en frézo des lettres phonétiques françaises
+  Object.keys(phonems["api-apf-frezo"]).forEach((key) => {
+    Object.keys(phonems["api-apf-frezo"][key]).forEach((subKey) => {
+      const find = subKey;
+      const replace = phonems["api-apf-frezo"][key][subKey][1];
+      apiText = replaceAll(apiText, find, replace);
+    });
+  });
+
+  // Conversion en frézo des lettres phonétiques étrangères éventuelles
+
+  apiText = apiText.replace(/ã/g, "â").replace(/ʊ/g, "u").replace(/ɡ/g, "g");
+
+  // Retrait des caractères phonétiques spéciaux
+  apiText = apiText
+    .replace(/͡|ˈ|ˌ|-(?=\s)|-[^-]|ː|[\u0303]/g, "")
+    .replace(/-+/g, "-");
+
+  return apiText;
+};
+
 const FrezoTranslate = () => {
-    const [isLoading, setIsLoading] = React.useState(false);
-    const [toTranslateText, setToTranslateText] = React.useState('')
-    const [translatedTextInfo, setTranslatedTextInfo] = React.useState({});
-    const [apiPhonetics, setAPIPhonetics] = React.useState('');
-    const [apfPhonetics, setAPFPhonetics] = React.useState('');
-    const apiLink = 'https://api2.unalengua.com/ipav3';
+  const [textToTranslate, setTextToTranslate] = React.useState("");
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [translatedTextInfo, setTranslatedTextInfo] = React.useState({});
+  const [ipaVersion, setIpaVersion] = React.useState("");
+  const [frezoVersion, setFrezoVersion] = React.useState("");
+  const apiLink = "https://api2.unalengua.com/ipav3";
 
-    React.useEffect(() => {
-        if (Object.keys(translatedTextInfo).length > 0) {
-            setAPIPhonetics(translatedTextInfo['ipa']);
-            setAPFPhonetics(phoneticApiToApf(translatedTextInfo['ipa']).replace(/ˈ|ˌ|-(?=\s)|-[^-]/g, '').replace(/-+/g, '-').replace(/[\u0303]/g, ''));
-        }
-    },[translatedTextInfo]);
-
-    const phoneticApiToApf = (apiText) => {
-        const replaceAll = (str, find, replace) => {
-            return str.replace(new RegExp(find, 'g'), replace);
-        };
-
-        Object.keys(translateJson['api-apf-frezo']).forEach((key) => {
-            Object.keys(translateJson['api-apf-frezo'][key]).forEach((subKey) => {
-                const find = subKey;
-                const replace = translateJson['api-apf-frezo'][key][subKey][1];
-                apiText = replaceAll(apiText, find, replace);
-            });
-        });
-
-        return apiText;
+  React.useEffect(() => {
+    if (Object.keys(translatedTextInfo).length > 0) {
+      setIpaVersion(translatedTextInfo["ipa"]);
+      setFrezoVersion(ipaToFrezo(translatedTextInfo["ipa"]));
     }
+  }, [translatedTextInfo]);
 
-    const searchInfo = (toTranslate) => {
-        setTranslatedTextInfo({});
-        setIsLoading(true);
-        fetch(apiLink, {
-            method: 'POST',
-            headers: {
-                'Accept' : 'application/json',
-                'Content-Type':'application/json'
-            },
-            body: JSON.stringify({
-                "text":toTranslate.replace(/-/g, '--'),
-                "lang":"fr-CA",
-                "mode":false
-            })
-        })
-            .then((response) => response.json())
-            .then((response) => {
-                setTranslatedTextInfo(response);
-            })
-            .catch(err => {
-                console.log("Error"+err);
-            })
-            .finally(() => {
-                setIsLoading(false);
-            });
+  const searchInfo = (toTranslate) => {
+    setTranslatedTextInfo({});
+    setIsLoading(true);
+    fetch(apiLink, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        text: toTranslate.replace(/-/g, "--"),
+        lang: "fr-CA",
+        mode: false,
+      }),
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        setTranslatedTextInfo(response);
+      })
+      .catch((err) => {
+        console.log("Error" + err);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  };
 
-    }
+  return (
+    <Stack sx={{ padding: "32px" }} spacing={2}>
+      <h1>Frezo Translate</h1>
+      <Stack>
+        <div>Français : </div>
+        <TextField
+          multiline
+          rows={4}
+          value={textToTranslate}
+          placeholder="Entrez votre texte en français..."
+          onChange={(e) => {
+            setTextToTranslate(e.target.value);
+            searchInfo(e.target.value);
+          }}
+        />
+      </Stack>
+      <Stack>
+        <div>Frézo : </div>
+        <TextField
+          multiline
+          rows={4}
+          disabled={isLoading}
+          value={frezoVersion}
+          placeholder="votr tèkst â frézo..."
+          InputProps={{
+            className: "frezo",
+            readOnly: true,
+          }}
+        />
+      </Stack>
+      <i>En phonétique : {ipaVersion}</i>
+    </Stack>
+  );
+};
 
-    return (
-        <div style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            flexDirection: 'column',
-            height: '100%'
-        }}>
-            <h1>Frezo Translate</h1>
-            <Stack alignItems='center' spacing={2}>
-                <TextField
-                    variant="outlined"
-                    value={toTranslateText}
-                    placeholder='Entrer votre texte à traduire'
-                    onChange={e => setToTranslateText(e.target.value)}
-                />
-                <div>
-                    <Button variant="contained" onClick={()=>{searchInfo(toTranslateText)}}>Traduire</Button>
-                </div>
-            </Stack>
-            <div>
-                {isLoading ?
-                    <span>Loading...</span>
-                    :
-                    <div>
-                        <p>
-                            <div><b>API : </b>{apiPhonetics}</div>
-                            <div className="frezo"><b>Frézo : </b>{apfPhonetics}</div>
-                        </p>
-                    </div>
-                }
-            </div>
-        </div>
-    )
-}
-
-export default FrezoTranslate
+export default FrezoTranslate;
