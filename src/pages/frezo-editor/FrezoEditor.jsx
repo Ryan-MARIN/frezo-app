@@ -4,6 +4,7 @@ function FrezoEditor() {
   const canvasRef = useRef(null);
   const [grid, setGrid] = useState(Array(11).fill().map(() => Array(7).fill(false)));
   const [eraseMode, setEraseMode] = useState(false);
+  const [fileName, setFileName] = useState('');
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -87,6 +88,10 @@ function FrezoEditor() {
     setEraseMode(!eraseMode);
   }
 
+  function handleFileNameChange(event) {
+    setFileName(event.target.value);
+  }
+
   function handleSave() {
     const columns = [];
     for (let x = 0; x < 11; x++) {
@@ -96,23 +101,61 @@ function FrezoEditor() {
       }
       columns.push(column);
     }
-    console.log(columns); // TODO: replace with actual save function
+  
+    // Remove leading and trailing columns with only zeros
+    let start = 0;
+    let end = columns.length - 1;
+  
+    while (start < end && columns[start].every(value => value === 0)) {
+      start++;
+    }
+  
+    while (end > start && columns[end].every(value => value === 0)) {
+      end--;
+    }
+  
+    const filteredColumns = columns.slice(start, end + 1);
+  
+    // Convert filteredColumns to JSON
+    const jsonData = JSON.stringify(filteredColumns);
+  
+    // Create a Blob with the JSON data
+    const blob = new Blob([jsonData], {type: 'application/json'});
+  
+    // Create a download link element
+    const downloadLink = document.createElement('a');
+    downloadLink.href = URL.createObjectURL(blob);
+    downloadLink.download = 'grid.json';
+    downloadLink.style.display = 'none';
+    document.body.appendChild(downloadLink);
+  
+    // Trigger the download link
+    downloadLink.click();
+  
+    // Clean up the download link element
+    document.body.removeChild(downloadLink);
   }
 
 return (
-<div>
-<canvas
-     ref={canvasRef}
-     width={550}
-     height={350}
-     onMouseDown={handleMouseDown}
-     onMouseUp={handleMouseUp}
-     onMouseMove={handleMouseMove}
-   />
-<button type="radio" onClick={handleReset}>Reset</button>
-<button onClick={handleErase}>Erase</button>
-<button onClick={handleSave}>Save</button>
-</div>
+  <div>
+    <canvas
+      ref={canvasRef}
+      width={550}
+      height={350}
+      onMouseDown={handleMouseDown}
+      onMouseUp={handleMouseUp}
+      onMouseMove={handleMouseMove}
+    />
+    <button type="radio" onClick={handleReset}>Reset</button>
+    <button onClick={handleErase}>Erase</button>
+    <input
+      type="text"
+      placeholder="Nom du fichier.json"
+      value={fileName}
+      onChange={handleFileNameChange}
+    />
+    <button onClick={handleSave}>Save</button>
+  </div>
 );
 }
 
