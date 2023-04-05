@@ -79,7 +79,7 @@
         "exemples":["<au>cune", "c<ô>té"]
       },
       "u" : {
-        "phonetique" : ["u"],
+        "phonetique" : ["u", "ʊ"],
         "francais" : ["ou"],
         "exemples":["v<ou>s", "c<oû>t"]
       },
@@ -99,126 +99,126 @@
         "exemples":["b<e>soin", "d<eu>x"]
       },
       "é" : {
-        "phonetique" : [""],
+        "phonetique" : ["e"],
         "francais" : ["é"],
         "exemples":["<é>t<é>"]
       },
       "è" : {
-        "phonetique" : [""],
-        "francais" : [""],
-        "exemples":[""]
+        "phonetique" : ["ɛ"],
+        "francais" : ["ai", "è", "ê"],
+        "exemples":["app<e>lle"]
       },
       "â" : {
-        "phonetique" : [""],
+        "phonetique" : ["ɑ̃"],
         "francais" : ["an, en"],
-        "exemples":[""]
+        "exemples":["<am>poule", "<e>ncre"]
       }
     },
     "consonnes": {
       "v" : {
-        "phonetique" : [""],
-        "francais" : [""],
-        "exemples":[""]
+        "phonetique" : ["v", "β"],
+        "francais" : ["v"],
+        "exemples":["ca<v>e"]
       },
       "f" : {
-        "phonetique" : [""],
-        "francais" : [""],
-        "exemples":[""]
+        "phonetique" : ["f"],
+        "francais" : ["f"],
+        "exemples":["<f>emme"]
       },
       "b" : {
-        "phonetique" : [""],
-        "francais" : [""],
-        "exemples":[""]
+        "phonetique" : ["b"],
+        "francais" : ["b"],
+        "exemples":["<b>eaucoup", "<b>é<b>é"]
       },
       "p" : {
-        "phonetique" : [""],
-        "francais" : [""],
-        "exemples":[""]
+        "phonetique" : ["p"],
+        "francais" : ["p"],
+        "exemples":["<p>eu"]
       },
       "Z" : {
-        "phonetique" : [""],
-        "francais" : [""],
-        "exemples":[""]
+        "phonetique" : ["ʒ"],
+        "francais" : ["j", "ge"],
+        "exemples":["<j>amais", "pi<ge>on"]
       },
       "S" : {
-        "phonetique" : [""],
-        "francais" : [""],
-        "exemples":[""]
+        "phonetique" : ["ʃ"],
+        "francais" : ["ch"],
+        "exemples":["<c>hef"]
       },
       "g" : {
-        "phonetique" : [""],
-        "francais" : [""],
-        "exemples":[""]
+        "phonetique" : ["g"],
+        "francais" : ["g"],
+        "exemples":["<g>auche", "<t>ag"]
       },
       "k" : {
-        "phonetique" : [""],
-        "francais" : [""],
-        "exemples":[""]
+        "phonetique" : ["k"],
+        "francais" : ["k", "qu", "c"],
+        "exemples":["<c>asse", "pa<qu>et"]
       },
       "z" : {
-        "phonetique" : [""],
-        "francais" : [""],
-        "exemples":[""]
+        "phonetique" : ["z"],
+        "francais" : ["z", "s"],
+        "exemples":["<z>one", "ba<s>e"]
       },
       "s" : {
-        "phonetique" : [""],
-        "francais" : [""],
-        "exemples":[""]
+        "phonetique" : ["s"],
+        "francais" : ["s", "z"],
+        "exemples":["au<ss>i", "pla<c>e"]
       },
       "d" : {
-        "phonetique" : [""],
-        "francais" : [""],
-        "exemples":[""]
+        "phonetique" : ["d"],
+        "francais" : ["d"],
+        "exemples":["mo<d>e", "a<dd>ition"]
       },
       "t" : {
-        "phonetique" : [""],
-        "francais" : [""],
-        "exemples":[""]
+        "phonetique" : ["t"],
+        "francais" : ["t"],
+        "exemples":["<t>ar<t>e", "pa<tt>e"]
       },
       "D" : {
-        "phonetique" : [""],
-        "francais" : [""],
-        "exemples":[""]
+        "phonetique" : ["ð"],
+        "francais" : ["th"],
+        "exemples":["mo<th>er>", "<th>ey"]
       },
       "T" : {
-        "phonetique" : [""],
-        "francais" : [""],
-        "exemples":[""]
+        "phonetique" : ["θ"],
+        "francais" : ["th"],
+        "exemples":["pa<th>way", "fai<th>ful"]
       },
       "m" : {
-        "phonetique" : [""],
-        "francais" : [""],
-        "exemples":[""]
+        "phonetique" : ["m"],
+        "francais" : ["m"],
+        "exemples":["ho<mm>e", "<m>aison"]
       },
       "n" : {
-        "phonetique" : [""],
-        "francais" : [""],
-        "exemples":[""]
+        "phonetique" : ["n"],
+        "francais" : ["n"],
+        "exemples":["<n>ous", "â<n>e"]
       },
       "l" : {
-        "phonetique" : [""],
-        "francais" : [""],
-        "exemples":[""]
+        "phonetique" : ["l"],
+        "francais" : ["l"],
+        "exemples":["<l>it", "ce<l>ui"]
       },
       "r" : {
-        "phonetique" : [""],
-        "francais" : [""],
-        "exemples":[""]
+        "phonetique" : ["ʁ", "ʀ"],
+        "francais" : ["r"],
+        "exemples":["<r>aison", "<r>at"]
       },
       "L" : {
-        "phonetique" : [""],
+        "phonetique" : ["r", "ɾ"],
         "francais" : [""],
-        "exemples":[""]
+        "exemples":["Ap<r>ovecha<r> (espagnol)"]
       },
       "R" : {
-        "phonetique" : [""],
+        "phonetique" : [],
         "francais" : [""],
-        "exemples":[""]
+        "exemples":[]
       },
       "h" : {
-        "phonetique" : [""],
-        "francais" : [""],
-        "exemples":[""]
+        "phonetique" : ["h"],
+        "francais" : ["h"],
+        "exemples":["<h>ello", "<h>a<h>a"]
       }
     },
     "chiffres": [
