@@ -1,14 +1,24 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from "react";
+import { useLocation } from "react-router";
 
 function FrezoEditor() {
   const canvasRef = useRef(null);
-  const [grid, setGrid] = useState(Array(11).fill().map(() => Array(7).fill(false)));
+  const [grid, setGrid] = useState(
+    Array(11)
+      .fill()
+      .map(() => Array(7).fill(false))
+  );
   const [eraseMode, setEraseMode] = useState(false);
-  const [fileName, setFileName] = useState('');
+  const [fileName, setFileName] = useState("");
+  const location = useLocation();
+
+  useEffect(() => {
+    document.title = `Frézo Editor`;
+  }, [location]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext("2d");
     const width = canvas.width;
     const height = canvas.height;
     const cellSize = Math.floor(Math.min(width / 11, height / 7));
@@ -17,7 +27,7 @@ function FrezoEditor() {
     ctx.clearRect(0, 0, width, height);
 
     // Draw the grid lines
-    ctx.strokeStyle = '#000';
+    ctx.strokeStyle = "#000";
     ctx.lineWidth = 1;
     for (let x = 0; x <= 11; x++) {
       ctx.beginPath();
@@ -36,7 +46,7 @@ function FrezoEditor() {
     for (let x = 0; x < 11; x++) {
       for (let y = 0; y < 7; y++) {
         if (grid[x][y]) {
-          ctx.fillStyle = '#000'; // black
+          ctx.fillStyle = "#000"; // black
           ctx.fillRect(x * cellSize, y * cellSize, cellSize, cellSize);
         }
       }
@@ -81,7 +91,11 @@ function FrezoEditor() {
   }
 
   function handleReset() {
-    setGrid(Array(11).fill().map(() => Array(7).fill(false)));
+    setGrid(
+      Array(11)
+        .fill()
+        .map(() => Array(7).fill(false))
+    );
   }
 
   function handleErase() {
@@ -101,37 +115,37 @@ function FrezoEditor() {
       }
       columns.push(column);
     }
-  
+
     // Remove leading and trailing columns with only zeros
     let start = 0;
     let end = columns.length - 1;
-  
-    while (start < end && columns[start].every(value => value === 0)) {
+
+    while (start < end && columns[start].every((value) => value === 0)) {
       start++;
     }
-  
-    while (end > start && columns[end].every(value => value === 0)) {
+
+    while (end > start && columns[end].every((value) => value === 0)) {
       end--;
     }
-  
+
     const filteredColumns = columns.slice(start, end + 1);
-  
+
     // Convert filteredColumns to JSON
     const jsonData = JSON.stringify(filteredColumns);
-  
+
     // Create a Blob with the JSON data
-    const blob = new Blob([jsonData], {type: 'application/json'});
-  
+    const blob = new Blob([jsonData], { type: "application/json" });
+
     // Create a download link element
-    const downloadLink = document.createElement('a');
+    const downloadLink = document.createElement("a");
     downloadLink.href = URL.createObjectURL(blob);
-    downloadLink.download = fileName + '.json'; // Modification
-    downloadLink.style.display = 'none';
+    downloadLink.download = fileName + ".json"; // Modification
+    downloadLink.style.display = "none";
     document.body.appendChild(downloadLink);
-  
+
     // Trigger the download link
     downloadLink.click();
-  
+
     // Clean up the download link element
     document.body.removeChild(downloadLink);
   }
@@ -142,7 +156,9 @@ function FrezoEditor() {
     reader.onload = (event) => {
       const jsonData = event.target.result;
       const data = JSON.parse(jsonData);
-      const newGrid = Array(11).fill().map(() => Array(7).fill(false));
+      const newGrid = Array(11)
+        .fill()
+        .map(() => Array(7).fill(false));
       for (let x = 0; x < data.length && x < 11; x++) {
         for (let y = 0; y < data[x].length && y < 7; y++) {
           newGrid[x][y] = data[x][y] === 1;
@@ -154,32 +170,39 @@ function FrezoEditor() {
     setFileName(file.name);
   }
 
+  return (
+    <>
+      <h1>
+        Frezo Editor<div>Créez vos propres lettres frézo !</div>
+      </h1>
+      <div>
+        <canvas
+          ref={canvasRef}
+          width={550}
+          height={350}
+          onMouseDown={handleMouseDown}
+          onMouseUp={handleMouseUp}
+          onMouseMove={handleMouseMove}
+        />
+        <button type="radio" onClick={handleReset}>
+          Reset
+        </button>
+        <button onClick={handleErase}>Erase</button>
+        <input
+          type="text"
+          placeholder="Nom du fichier.json"
+          value={fileName}
+          onChange={handleFileNameChange}
+        />
+        <button onClick={handleSave}>Save</button>
 
-return (
-  <div>
-    <canvas
-      ref={canvasRef}
-      width={550}
-      height={350}
-      onMouseDown={handleMouseDown}
-      onMouseUp={handleMouseUp}
-      onMouseMove={handleMouseMove}
-    />
-    <button type="radio" onClick={handleReset}>Reset</button>
-    <button onClick={handleErase}>Erase</button>
-    <input
-      type="text"
-      placeholder="Nom du fichier.json"
-      value={fileName}
-      onChange={handleFileNameChange}
-    />
-    <button onClick={handleSave}>Save</button>
-    
-    <input type="file" accept=".json" onChange={handleFileSelect} />
-    <div>{fileName ? `Selected file: ${fileName}` : 'No file selected'}</div>
-
-  </div>
-);
+        <input type="file" accept=".json" onChange={handleFileSelect} />
+        <div>
+          {fileName ? `Selected file: ${fileName}` : "No file selected"}
+        </div>
+      </div>
+    </>
+  );
 }
 
 export default FrezoEditor;
