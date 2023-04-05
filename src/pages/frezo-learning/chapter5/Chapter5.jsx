@@ -2,7 +2,7 @@ import React from 'react'
 
 const Chapter5 = () => {
   return (
-    <div>Chapter5</div>
+    <div><h1>Chapitre 5 : Les idéogrammes</h1></div>
   )
 }
 

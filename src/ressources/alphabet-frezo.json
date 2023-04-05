@@ -42,12 +42,12 @@
     },
     "ë" : {
       "phonetique" : ["œ"],
-      "francais" : ["eu", "œ", "œu"],
+      "francais" : ["œu", "œ", "eu", "e"],
       "exemples": ["b<eu>rre", "<œu>f"]
     },
     "e" : {
       "phonetique" : ["ø", "ə"],
-      "francais" : ["e", "eu"],
+      "francais" : ["eu", "e", "œu"],
       "exemples": ["b<e>soin", "d<eu>x"]
     },
     "é" : {
@@ -57,7 +57,7 @@
     },
     "è" : {
       "phonetique" : ["ɛ"],
-      "francais" : ["e", "è", "ê", "ai", "ei"],
+      "francais" : ["è", "ê", "ai", "ei", "e"],
       "exemples": ["v<ei>ne", "b<e>lle"]
     },
     "â" : {

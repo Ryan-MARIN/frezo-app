@@ -16,7 +16,8 @@ const MenuButton = (props) => {
       to={props.link}
     >
       <div>{props.children}</div>
-      <b>{props.description}</b>
+      <div><b>{props.description}</b></div>
+      <div>→ <i>{props.info}</i></div>
     </NavLink>
   );
 };

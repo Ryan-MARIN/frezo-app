@@ -29,7 +29,7 @@ const Home = () => {
       </Link>
       <Link to={"/learning"} style={{ color: "black", textDecoration: "none" }}>
         <Card sx={{p:1}}>
-          <b>Frézo Learning</b> — Apprennez le frézo à travers 5 chapitres de
+          <b>Frézo Learning</b> — Apprenez le frézo à travers 5 chapitres de
           cours et d'exercices.
         </Card>
       </Link>
