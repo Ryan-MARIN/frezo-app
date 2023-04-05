@@ -1,30 +1,30 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./Body.css";
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 const Body = () => {
-  const location = useLocation();
-
-  useEffect(() => {
-    document.title = `FRÉZO - ${location.pathname}`;
-  }, [location]);
   return (
     <div
+    className="body"
       style={{
         display: "flex",
         flexDirection: "column",
         flexGrow: 1,
         width: "100%",
+        minWidth: "310px",
         overflow: "overlay",
         backgroundColor: "#FFFC",
         position: "inherit",
         top: "0px",
         flexWrap: "wrap",
-        margin: "40px",
-        padding: "32px",
+        margin: "40px"
       }}
     >
+      <div style={{
+        overflowY: "auto",
+        padding: "32px", }}>
       <Outlet />
+      </div>
     </div>
   );
 };

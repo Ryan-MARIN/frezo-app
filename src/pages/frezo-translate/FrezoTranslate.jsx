@@ -1,7 +1,7 @@
-import React from "react";
-import phonems from "../../ressources/phonems.json";
-import TextField from "@mui/material/TextField";
-import { Stack } from "@mui/material";
+import React, { useEffect } from "react";
+import phonems from "../../ressources/phonetique-vers-frezo.json";
+import { Stack, TextField } from "@mui/material";
+import { useLocation } from "react-router-dom";
 
 const ipaToFrezo = (apiText) => {
   const replaceAll = (str, find, replace) => {
@@ -9,13 +9,13 @@ const ipaToFrezo = (apiText) => {
   };
 
   // Conversions en frézo des lettres phonétiques françaises
-  Object.keys(phonems["api-apf-frezo"]).forEach((key) => {
-    Object.keys(phonems["api-apf-frezo"][key]).forEach((subKey) => {
-      const find = subKey;
-      const replace = phonems["api-apf-frezo"][key][subKey][1];
+  for(let categorie in phonems){
+    for(let lettre in phonems[categorie]){
+      const find = lettre;
+      const replace = phonems[categorie][lettre];
       apiText = replaceAll(apiText, find, replace);
-    });
-  });
+    }
+  }
 
   // Conversion en frézo des lettres phonétiques étrangères éventuelles
 
@@ -37,6 +37,11 @@ const FrezoTranslate = () => {
   const [ipaVersion, setIpaVersion] = React.useState("");
   const [frezoVersion, setFrezoVersion] = React.useState("");
   const apiLink = "https://api2.unalengua.com/ipav3";
+
+  const location = useLocation();
+  useEffect(() => {
+    document.title = `Frézo Translate`;
+  }, [location]);
 
   React.useEffect(() => {
     if (Object.keys(translatedTextInfo).length > 0) {
@@ -74,7 +79,7 @@ const FrezoTranslate = () => {
 
   return (
     <Stack spacing={2}>
-      <h1>Frezo Translate</h1>
+      <h1>Frezo Translate<div>Traduisez des phrases en frézo !</div></h1>
       <Stack>
         <div>Français : </div>
         <TextField

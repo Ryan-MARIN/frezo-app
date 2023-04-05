@@ -3,7 +3,7 @@ import "./NavButton.css";
 import {NavLink} from "react-router-dom";
 
 const NavButton = (props) => {
-  const { children, link } = props;
+  const { children, link, icon } = props;
   return (
     <NavLink
       className="nav-button"
@@ -17,7 +17,7 @@ const NavButton = (props) => {
       }}
       to={link}
     >
-      <div className="nav-button-icon" style={{ width: "30px", height:"100%", padding:"0px 10px" }}/>
+      <div className={icon ? "nav-button-icon" : undefined} style={{ width: "30px", height:"100%", padding:"0px 10px" }}/>
       {children}
     </NavLink>
   );

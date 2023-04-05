@@ -1,8 +1,15 @@
 import React from "react";
 import MenuButton from './MenuButton';
 import { Stack } from "@mui/material";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 const FrezoLearning = () => {
+  const location = useLocation();
+  useEffect(() => {
+    document.title = `Frézo Learning`;
+  }, [location]);
+
   return (
       <div
         style={{
@@ -11,7 +18,7 @@ const FrezoLearning = () => {
           paddingBottom: '40px',
         }}
       >
-        <h1>Apprenez le Frézo pas à pas !</h1>
+        <h1>Frezo Learning<div>Apprenez le frézo pas à pas !</div></h1>
         <Stack spacing={2}>
         <MenuButton link="chapter-1" description="L'alphabet">Chapitre 1</MenuButton>
         <MenuButton link="chapter-2" description="Le système traditionnel">Chapitre 2</MenuButton>

@@ -1,0 +1,196 @@
+{
+  "voyelles": {
+    "a" : {
+      "phonetique" : ["a", "ɑ"],
+      "francais" : ["a"],
+      "exemples": ["<a>nnée", "tr<a>v<a>il"]
+    },
+    "y" : {
+      "phonetique" : ["y"],
+      "francais" : ["u"],
+      "exemples": ["<u>nique", "ét<u>des"]
+    },
+    "ê" : {
+      "phonetique" : ["ɛ̃","œ̃"],
+      "francais" : ["in", "im", "yn", "ym", "un", "um", "ain", "aim", "ein"],
+      "exemples": ["<ain>si", "pr<in>cipe"]
+    },
+    "i" : {
+      "phonetique" : ["i"],
+      "francais" : ["i", "y"],
+      "exemples": ["mag<i>e", "m<i>gnon"]
+    },
+    "ò" : {
+      "phonetique" : ["ɔ"],
+      "francais" : ["o"],
+      "exemples": ["h<o>mme", "c<o>mme"]
+    },
+    "o" : {
+      "phonetique" : ["o"],
+      "francais" : ["o", "au", "eau"],
+      "exemples": ["<au>cune", "c<ô>té"]
+    },
+    "u" : {
+      "phonetique" : ["u", "ʊ", "w"],
+      "francais" : ["ou", "w"],
+      "exemples": ["v<ou>s", "ki<w>i"]
+    },
+    "ô" : {
+      "phonetique" : ["ɔ̃"],
+      "francais" : ["on", "om"],
+      "exemples": ["<om>bre", "mais<on>"]
+    },
+    "ë" : {
+      "phonetique" : ["œ"],
+      "francais" : ["eu", "œ", "œu"],
+      "exemples": ["b<eu>rre", "<œu>f"]
+    },
+    "e" : {
+      "phonetique" : ["ø", "ə"],
+      "francais" : ["e", "eu"],
+      "exemples": ["b<e>soin", "d<eu>x"]
+    },
+    "é" : {
+      "phonetique" : ["e"],
+      "francais" : ["é"],
+      "exemples": ["<é>t<é>"]
+    },
+    "è" : {
+      "phonetique" : ["ɛ"],
+      "francais" : ["e", "è", "ê", "ai", "ei"],
+      "exemples": ["v<ei>ne", "b<e>lle"]
+    },
+    "â" : {
+      "phonetique" : ["ɑ̃"],
+      "francais" : ["an", "am", "en", "em"],
+      "exemples": ["<am>poule", "<e>ncre"]
+    }
+  },
+  "consonnes": {
+    "v" : {
+      "phonetique" : ["v", "β"],
+      "francais" : ["v", "w"],
+      "exemples": ["ca<v>e", "<w>agon"]
+    },
+    "f" : {
+      "phonetique" : ["f"],
+      "francais" : ["f", "ph"],
+      "exemples": ["<f>emme", "<ph>oto"]
+    },
+    "b" : {
+      "phonetique" : ["b"],
+      "francais" : ["b"],
+      "exemples": ["<b>eaucoup", "<b>é<b>é"]
+    },
+    "p" : {
+      "phonetique" : ["p"],
+      "francais" : ["p"],
+      "exemples": ["<p>orte", "na<pp>e"]
+    },
+    "Z" : {
+      "phonetique" : ["ʒ"],
+      "francais" : ["j", "ge"],
+      "exemples": ["<j>amais", "pi<ge>on"]
+    },
+    "S" : {
+      "phonetique" : ["ʃ"],
+      "francais" : ["ch", "sh"],
+      "exemples": ["<ch>ef", "<sh>érif"]
+    },
+    "g" : {
+      "phonetique" : ["g"],
+      "francais" : ["g", "gu"],
+      "exemples": ["<g>auche", "ba<gu>e"]
+    },
+    "k" : {
+      "phonetique" : ["k"],
+      "francais" : ["k", "c", "q", "qu"],
+      "exemples": ["<c>arton", "pa<qu>et"]
+    },
+    "z" : {
+      "phonetique" : ["z"],
+      "francais" : ["z", "s"],
+      "exemples": ["<z>one", "ba<s>e"]
+    },
+    "s" : {
+      "phonetique" : ["s"],
+      "francais" : ["s", "c", "ç"],
+      "exemples": ["au<ss>i", "pla<c>e"]
+    },
+    "d" : {
+      "phonetique" : ["d"],
+      "francais" : ["d"],
+      "exemples": ["mo<d>e", "a<dd>ition"]
+    },
+    "t" : {
+      "phonetique" : ["t"],
+      "francais" : ["t"],
+      "exemples": ["<t>ar<t>e", "pa<tt>e"]
+    },
+    "D" : {
+      "phonetique" : ["ð"],
+      "francais" : ["Le TH voisé en anglais"],
+      "exemples": ["mo<th>er", "<th>ey"]
+    },
+    "T" : {
+      "phonetique" : ["θ"],
+      "francais" : ["Le TH sourd en anglais"],
+      "exemples": ["pa<th>way", "mou<th>"]
+    },
+    "m" : {
+      "phonetique" : ["m"],
+      "francais" : ["m"],
+      "exemples": ["ho<mm>e", "<m>aison"]
+    },
+    "n" : {
+      "phonetique" : ["n"],
+      "francais" : ["n"],
+      "exemples": ["<n>ous", "â<n>e"]
+    },
+    "l" : {
+      "phonetique" : ["l"],
+      "francais" : ["l"],
+      "exemples": ["<l>it", "ce<l>ui"]
+    },
+    "r" : {
+      "phonetique" : ["ʁ", "ʀ"],
+      "francais" : ["r"],
+      "exemples": ["<r>aison", "<r>at"]
+    },
+    "L" : {
+      "phonetique" : ["r", "ɾ"],
+      "francais" : ["Le R roulé en espagnol, italien ou japonais"],
+      "exemples": ["Ma<r>ghe<r>ita", "Saku<r>a"]
+    },
+    "R" : {
+      "phonetique" : ["ɹ"],
+      "francais" : ["Le R anglais"],
+      "exemples": ["<r>eally", "mo<r>e"]
+    },
+    "h" : {
+      "phonetique" : ["h"],
+      "francais" : ["h"],
+      "exemples": ["<h>a<h>a", "<h>op"]
+    }
+  },
+  "chiffres": [
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9"
+  ],
+  "ideogrammes": {
+    "::+" : "et, avec, plus",
+    "::-" : "sans, moins",
+    "::&" : "oui, positif",
+    "::–" : "non, négatif",
+    "::=" : "est, égal, équivaut",
+    "::|" : "ou"
+  }
+}

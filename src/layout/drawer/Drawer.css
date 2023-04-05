@@ -16,10 +16,7 @@
 }
 
 /* Style pour la scrollbar de Firefox */
-.drawer * {
-  scrollbar-color: transparent transparent;
-}
 
 .drawer * {
-  scrollbar-color: white black;
+  scrollbar-color: white transparent;
 }

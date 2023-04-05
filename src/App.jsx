@@ -27,7 +27,7 @@ function App() {
         backgroundImage: `url(${background})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
-        overflow: "hidden",
+        overflowX: "auto",
       }}
     >
       <BrowserRouter>

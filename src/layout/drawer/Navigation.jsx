@@ -11,10 +11,10 @@ const Navigation = () => {
       }}
     >
         <NavButton link='/home'>FRÉZO !</NavButton>
-        <NavButton link='/writer'>Frézo Writer</NavButton>
-        <NavButton link='/translate'>Frézo Translate</NavButton>
-        <NavButton link='/learning'>Frézo Learning</NavButton>
-        <NavButton link='/editor'>Frézo Editor</NavButton>
+        <NavButton link='/writer' icon>Frézo Writer</NavButton>
+        <NavButton link='/translate' icon>Frézo Translate</NavButton>
+        <NavButton link='/learning' icon>Frézo Learning</NavButton>
+        <NavButton link='/editor' icon>Frézo Editor</NavButton>
         <NavButton link='/about'>À propos</NavButton>
     </nav>
   );
