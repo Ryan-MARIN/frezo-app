@@ -8,29 +8,14 @@ const Chapter1 = () => {
       <h1>Chapitre 1 : L'alphabet</h1>
       <article>
         <p>
-          L'alphabet Frézo se compose de l'ensemble des sonorités existantes
-          dans la langue française.
+          Le frézo se compose de 34 lettres, dont 13 voyelles et 21 consonnes.
         </p>
-        <p>
-          En effet, Il se construit sur le modèle de l'APF (Alphabet Phonétique
-          Français), un alphabet qui recense l'ensemble des sons français
-          existants dans la langue française.
-        </p>
-        <p className="info">
-          L'APF est un alphabet phonétique créé lui-même sur le modèle de l'API
-          (Alphabet Phonétique Internationnal). L'API rencense les sons de
-          l'ensemble des langues du monde, et utilise tout un tas de symboles
-          assez exotiques. L'APF est pratique pour le Frézo car il ne recense
-          que la partie française de l'API, et utilise des symboles connus des
-          français.
-        </p>
-        <h2>Leste des symboles</h2>
+        <p>Chaque lettre est associée à un son :</p>
         <table>
           <thead>
             <tr>
               <th>Frézo</th>
-              <th>APF</th>
-              <th>API</th>
+              <th>Phonétique</th>
               <th>Exemple</th>
             </tr>
           </thead>
@@ -38,13 +23,12 @@ const Chapter1 = () => {
             <tr>
               <td>a</td>
               <td>a</td>
-              <td>a</td>
               <td>Avion</td>
             </tr>
           </tbody>
         </table>
       </article>
-      <Exercice1/>
+      <Exercice1 />
     </div>
   );
 };

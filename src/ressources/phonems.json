@@ -47,49 +47,95 @@
     }
   },
   "frezo-francais": {
-    "a" : "a",
-    "y" : "u",
-    "ê" : "in",
-    "i" : "i",
-    "ò" : "ô",
-    "o" : "o",
-    "u" : "ou",
-    "ô" : "on",
-    "ë" : "e",
-    "e" : "eu",
-    "é" : "é",
-    "è" : "è",
-    "â" : "an",
-    "v" : "v",
-    "f" : "f",
-    "b" : "b",
-    "p" : "p",
-    "Z" : "Z",
-    "S" : "S",
-    "g" : "g",
-    "k" : "k",
-    "z" : "z",
-    "s" : "s",
-    "d" : "d",
-    "t" : "t",
-    "D" : "th",
-    "T" : "th",
-    "m" : "m",
-    "n" : "n",
-    "l" : "l",
-    "r" : "r",
-    "L" : "r",
-    "R" : "r",
-    "h" : "h",
-    "0" : "0",
-    "1" : "1",
-    "2" : "2",
-    "3" : "3",
-    "4" : "4",
-    "5" : "5",
-    "6" : "6",
-    "7" : "7",
-    "8" : "8",
-    "9" : "9"
+    "voyelles": {
+      "a" : {
+        "phonetique" : ["a", "ɑ"],
+        "francais" : ["a"],
+        "exemples":["<a>nnée", "tr<a>v<a>il"]
+      },
+      "y" : {
+        "phonetique" : ["y"],
+        "francais" : ["u"],
+        "exemples":["<u>nique", "ét<u>des"]
+      },
+      "ê" : {
+        "phonetique" : ["ɛ̃","œ̃"],
+        "francais" : ["in", "im", "yn", "ym", "un", "um", "ain", "aim", "ein"],
+        "exemples":["<ain>si", "pr<in>cipe"]
+      },
+      "i" : {
+        "phonetique" : ["i"],
+        "francais" : ["i", "y"],
+        "exemples":["mag<i>e", "m<i>gnon"]
+      },
+      "ò" : {
+        "phonetique" : ["ɔ"],
+        "francais" : ["o"],
+        "exemples":["h<o>mme", "c<o>mme"]
+      },
+      "o" : {
+        "phonetique" : ["o"],
+        "francais" : ["o", "au", "eau"],
+        "exemples":["<au>cune", "c<ô>té"]
+      },
+      "u" : {
+        "phonetique" : ["u"],
+        "francais" : ["ou"],
+        "exemples":["v<ou>s", "c<oû>t"]
+      },
+      "ô" : {
+        "phonetique" : ["ɔ̃"],
+        "francais" : ["on", "om"],
+        "exemples":["<om>bre", "mais<on>"]
+      },
+      "ë" : {
+        "phonetique" : ["œ"],
+        "francais" : ["eu", "œ", "œu"],
+        "exemples":["b<eu>rre", "<œu>f"]
+      },
+      "e" : {
+        "phonetique" : ["ø", "ə"],
+        "francais" : ["e", "eu"],
+        "exemples":["b<e>soin", "d<eu>x"]
+      },
+      "é" : ["é",""],
+      "è" : ["è",""],
+      "â" : ["an",""]
+    },
+    "consonnes": {
+      "v" : ["v",""],
+      "f" : ["f",""],
+      "b" : ["b",""],
+      "p" : ["p",""],
+      "Z" : ["Z",""],
+      "S" : ["S",""],
+      "g" : ["g",""],
+      "k" : ["k",""],
+      "z" : ["z",""],
+      "s" : ["s",""],
+      "d" : ["d",""],
+      "t" : ["t",""],
+      "D" : ["th",""],
+      "T" : ["th",""],
+      "m" : ["m",""],
+      "n" : ["n",""],
+      "l" : ["l",""],
+      "r" : ["r",""],
+      "L" : ["r",""],
+      "R" : ["r",""],
+      "h" : ["h",""]
+    },
+    "chiffres": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9"
+    ]
   }
 }
