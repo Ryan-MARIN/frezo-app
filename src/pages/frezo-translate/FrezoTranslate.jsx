@@ -73,7 +73,7 @@ const FrezoTranslate = () => {
   };
 
   return (
-    <Stack sx={{ padding: "32px" }} spacing={2}>
+    <Stack spacing={2}>
       <h1>Frezo Translate</h1>
       <Stack>
         <div>Français : </div>
@@ -86,6 +86,7 @@ const FrezoTranslate = () => {
             setTextToTranslate(e.target.value);
             searchInfo(e.target.value);
           }}
+          sx={{bgcolor: "white"}}
         />
       </Stack>
       <Stack>
@@ -100,6 +101,7 @@ const FrezoTranslate = () => {
             className: "frezo",
             readOnly: true,
           }}
+          sx={{bgcolor: "white"}}
         />
       </Stack>
       <i>En phonétique : {ipaVersion}</i>

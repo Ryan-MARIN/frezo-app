@@ -98,32 +98,128 @@
         "francais" : ["e", "eu"],
         "exemples":["b<e>soin", "d<eu>x"]
       },
-      "é" : ["é",""],
-      "è" : ["è",""],
-      "â" : ["an",""]
+      "é" : {
+        "phonetique" : [""],
+        "francais" : ["é"],
+        "exemples":["<é>t<é>"]
+      },
+      "è" : {
+        "phonetique" : [""],
+        "francais" : [""],
+        "exemples":[""]
+      },
+      "â" : {
+        "phonetique" : [""],
+        "francais" : ["an, en"],
+        "exemples":[""]
+      }
     },
     "consonnes": {
-      "v" : ["v",""],
-      "f" : ["f",""],
-      "b" : ["b",""],
-      "p" : ["p",""],
-      "Z" : ["Z",""],
-      "S" : ["S",""],
-      "g" : ["g",""],
-      "k" : ["k",""],
-      "z" : ["z",""],
-      "s" : ["s",""],
-      "d" : ["d",""],
-      "t" : ["t",""],
-      "D" : ["th",""],
-      "T" : ["th",""],
-      "m" : ["m",""],
-      "n" : ["n",""],
-      "l" : ["l",""],
-      "r" : ["r",""],
-      "L" : ["r",""],
-      "R" : ["r",""],
-      "h" : ["h",""]
+      "v" : {
+        "phonetique" : [""],
+        "francais" : [""],
+        "exemples":[""]
+      },
+      "f" : {
+        "phonetique" : [""],
+        "francais" : [""],
+        "exemples":[""]
+      },
+      "b" : {
+        "phonetique" : [""],
+        "francais" : [""],
+        "exemples":[""]
+      },
+      "p" : {
+        "phonetique" : [""],
+        "francais" : [""],
+        "exemples":[""]
+      },
+      "Z" : {
+        "phonetique" : [""],
+        "francais" : [""],
+        "exemples":[""]
+      },
+      "S" : {
+        "phonetique" : [""],
+        "francais" : [""],
+        "exemples":[""]
+      },
+      "g" : {
+        "phonetique" : [""],
+        "francais" : [""],
+        "exemples":[""]
+      },
+      "k" : {
+        "phonetique" : [""],
+        "francais" : [""],
+        "exemples":[""]
+      },
+      "z" : {
+        "phonetique" : [""],
+        "francais" : [""],
+        "exemples":[""]
+      },
+      "s" : {
+        "phonetique" : [""],
+        "francais" : [""],
+        "exemples":[""]
+      },
+      "d" : {
+        "phonetique" : [""],
+        "francais" : [""],
+        "exemples":[""]
+      },
+      "t" : {
+        "phonetique" : [""],
+        "francais" : [""],
+        "exemples":[""]
+      },
+      "D" : {
+        "phonetique" : [""],
+        "francais" : [""],
+        "exemples":[""]
+      },
+      "T" : {
+        "phonetique" : [""],
+        "francais" : [""],
+        "exemples":[""]
+      },
+      "m" : {
+        "phonetique" : [""],
+        "francais" : [""],
+        "exemples":[""]
+      },
+      "n" : {
+        "phonetique" : [""],
+        "francais" : [""],
+        "exemples":[""]
+      },
+      "l" : {
+        "phonetique" : [""],
+        "francais" : [""],
+        "exemples":[""]
+      },
+      "r" : {
+        "phonetique" : [""],
+        "francais" : [""],
+        "exemples":[""]
+      },
+      "L" : {
+        "phonetique" : [""],
+        "francais" : [""],
+        "exemples":[""]
+      },
+      "R" : {
+        "phonetique" : [""],
+        "francais" : [""],
+        "exemples":[""]
+      },
+      "h" : {
+        "phonetique" : [""],
+        "francais" : [""],
+        "exemples":[""]
+      }
     },
     "chiffres": [
       "0",

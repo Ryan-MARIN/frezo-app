@@ -10,12 +10,8 @@ const MenuButton = (props) => {
         color: "white",
         backgroundColor: "black",
         borderStyle: "none",
-        borderRadius: "20px",
-        width: "300px",
-        margin: "8px",
-        padding: "8px",
+        padding: "16px",
         textDecoration:"none",
-        textAlign:"center"
       }}
       to={props.link}
     >

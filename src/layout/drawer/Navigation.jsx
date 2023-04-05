@@ -14,8 +14,8 @@ const Navigation = () => {
         <NavButton link='/writer'>Frézo Writer</NavButton>
         <NavButton link='/translate'>Frézo Translate</NavButton>
         <NavButton link='/learning'>Frézo Learning</NavButton>
-        <NavButton link='/editor'>Frezo Editor</NavButton>
-        <NavButton link='/about'>About</NavButton>
+        <NavButton link='/editor'>Frézo Editor</NavButton>
+        <NavButton link='/about'>À propos</NavButton>
     </nav>
   );
 };

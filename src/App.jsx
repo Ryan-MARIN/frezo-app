@@ -1,20 +1,20 @@
-import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
-import background from "./images/background.png";
-import Drawer from "./layout/drawer/Drawer";
-import Body from "./layout/body/Body";
 import React from "react";
-import FrezoEditor from "./pages/frezo-editor/FrezoEditor";
-import FrezoWriter from "./pages/frezo-writer/FrezoWriter";
-import Home from "./pages/home/Home";
-import FrezoTranslate from "./pages/frezo-translate/FrezoTranslate";
-import FrezoLearning from "./pages/frezo-learning/FrezoLearning";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import background from "./images/background.png";
+import Body from "./layout/body/Body";
+import Drawer from "./layout/drawer/Drawer";
 import About from "./pages/about/About";
+import FrezoEditor from "./pages/frezo-editor/FrezoEditor";
+import ChapterLayout from './pages/frezo-learning/ChapterLayout';
+import FrezoLearning from "./pages/frezo-learning/FrezoLearning";
 import Chapter1 from "./pages/frezo-learning/chapter1/Chapter1";
 import Chapter2 from "./pages/frezo-learning/chapter2/Chapter2";
-import Chapter4 from "./pages/frezo-learning/chapter4/Chapter4";
 import Chapter3 from "./pages/frezo-learning/chapter3/Chapter3";
+import Chapter4 from "./pages/frezo-learning/chapter4/Chapter4";
 import Chapter5 from "./pages/frezo-learning/chapter5/Chapter5";
-import ChapterLayout from './pages/frezo-learning/ChapterLayout';
+import FrezoTranslate from "./pages/frezo-translate/FrezoTranslate";
+import FrezoWriter from "./pages/frezo-writer/FrezoWriter";
+import Home from "./pages/home/Home";
 
 function App() {
   return (
