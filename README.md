@@ -15,7 +15,7 @@ Traduisez vos textes français en Frézo, ou bien vos textes Frézo en français
 
 ## Frézo Learning
 
-Apprennez le Frézo traditionnel et le Frézo simplifié à travers différents cours et exercices !
+Apprenez le Frézo traditionnel et le Frézo simplifié à travers différents cours et exercices !
 
 
 ## Frézo Editor
