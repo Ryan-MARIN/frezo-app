@@ -125,7 +125,7 @@ function FrezoEditor() {
     // Create a download link element
     const downloadLink = document.createElement('a');
     downloadLink.href = URL.createObjectURL(blob);
-    downloadLink.download = 'grid.json';
+    downloadLink.download = fileName + '.json'; // Modification
     downloadLink.style.display = 'none';
     document.body.appendChild(downloadLink);
   
@@ -135,6 +135,25 @@ function FrezoEditor() {
     // Clean up the download link element
     document.body.removeChild(downloadLink);
   }
+
+  function handleFileSelect(event) {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const jsonData = event.target.result;
+      const data = JSON.parse(jsonData);
+      const newGrid = Array(11).fill().map(() => Array(7).fill(false));
+      for (let x = 0; x < data.length && x < 11; x++) {
+        for (let y = 0; y < data[x].length && y < 7; y++) {
+          newGrid[x][y] = data[x][y] === 1;
+        }
+      }
+      setGrid(newGrid);
+    };
+    reader.readAsText(file);
+    setFileName(file.name);
+  }
+
 
 return (
   <div>
@@ -155,6 +174,10 @@ return (
       onChange={handleFileNameChange}
     />
     <button onClick={handleSave}>Save</button>
+    
+    <input type="file" accept=".json" onChange={handleFileSelect} />
+    <div>{fileName ? `Selected file: ${fileName}` : 'No file selected'}</div>
+
   </div>
 );
 }
