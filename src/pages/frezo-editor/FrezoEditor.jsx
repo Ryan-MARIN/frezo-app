@@ -1,3 +1,5 @@
+import { Button } from "@mui/material";
+import { Stack } from "@mui/system";
 import React, { useState, useEffect, useRef } from "react";
 import { useLocation } from "react-router";
 
@@ -173,9 +175,15 @@ function FrezoEditor() {
   return (
     <>
       <h1>
-        Frezo Editor<div>Créez vos propres lettres frézo !</div>
+        Frézo Editor<div>Créez vos propres lettres frézo !</div>
       </h1>
-      <div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
         <canvas
           ref={canvasRef}
           width={550}
@@ -183,23 +191,41 @@ function FrezoEditor() {
           onMouseDown={handleMouseDown}
           onMouseUp={handleMouseUp}
           onMouseMove={handleMouseMove}
+          style={{backgroundColor:"white"}}
         />
-        <button type="radio" onClick={handleReset}>
-          Reset
-        </button>
-        <button onClick={handleErase}>Erase</button>
-        <input
-          type="text"
-          placeholder="Nom du fichier.json"
-          value={fileName}
-          onChange={handleFileNameChange}
-        />
-        <button onClick={handleSave}>Save</button>
-
-        <input type="file" accept=".json" onChange={handleFileSelect} />
-        <div>
-          {fileName ? `Selected file: ${fileName}` : "No file selected"}
-        </div>
+        <Stack spacing={1} alignItems={"center"} sx={{ p: 2 }}>
+          <Stack direction={"row"} spacing={2}>
+            <Button variant="contained" type="radio" onClick={handleReset}>
+              Tout effacer
+            </Button>
+            <Button variant="contained" onClick={handleErase}>
+              {eraseMode ? "Dessiner" : "Gommer"}
+            </Button>
+          </Stack>
+          <div />
+          <div />
+          Sauvegarder :
+          <Stack direction={"row"}>
+            <input
+              type="text"
+              placeholder="Nom du fichier.json"
+              value={fileName}
+              onChange={handleFileNameChange}
+            />
+            <Button variant="contained" color="success" onClick={handleSave}>
+              Enregistrer
+            </Button>
+          </Stack>
+          <div />
+          <div />
+          Importer :
+          <Stack spacing={1} alignItems={"center"}>
+            <input style={{backgroundColor:"white"}} type="file" accept=".json" onChange={handleFileSelect} />
+            <div>
+              {fileName ? `Selected file: ${fileName}` : "No file selected"}
+            </div>
+          </Stack>
+        </Stack>
       </div>
     </>
   );

@@ -37,10 +37,13 @@ const Exercice1 = () => {
   const renderSounds = () => {
     const buttons = [];
 
-    Object.values(mergeVoyellesConsonnes).forEach((lettre) => {
+    Object.values(mergeVoyellesConsonnes).forEach((lettre, index) => {
       buttons.push(
-        <Grid item key={lettre.francais[0]} xs={2} lg={1}>
-          <Tooltip title={formatString(lettre.exemples[0] + ", " + lettre.exemples[1])} arrow>
+        <Grid item key={index} xs={2} lg={1}>
+          <Tooltip
+            title={formatString(lettre.exemples[0] + ", " + lettre.exemples[1])}
+            arrow
+          >
             <button
               style={{ width: "100%", height: "100%" }}
               onClick={() => handleLetterClick(lettre.francais[0])}
@@ -56,7 +59,7 @@ const Exercice1 = () => {
   };
 
   return (
-    <div>
+    <>
       <h1>Exercice 1</h1>
       {currentSymbol && (
         <Stack alignItems={"center"}>
@@ -71,7 +74,7 @@ const Exercice1 = () => {
           </p>
         </Stack>
       )}
-    </div>
+    </>
   );
 };
 

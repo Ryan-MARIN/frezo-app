@@ -2,7 +2,7 @@ import React from "react";
 
 const Chapter3 = () => {
   return (
-    <div>
+    <>
       <h1>Chapitre 3 : Le système simplifié</h1>
       <p>
         Le Frézo simplifié possède une allure plus naturelle que le
@@ -19,7 +19,7 @@ const Chapter3 = () => {
         autres. Les caractères de dizaine, de centaine et de millier ne sont pas
         utilisables.
       </p>
-    </div>
+    </>
   );
 };
 

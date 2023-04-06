@@ -6,7 +6,7 @@ import formatString from "../../../helpers/formatString";
 
 const Chapter1 = () => {
   return (
-    <div>
+    <>
       <h1>Chapitre 1 : L'alphabet</h1>
       <article>
         <p>
@@ -25,15 +25,14 @@ const Chapter1 = () => {
             </thead>
             <tbody>
               <tr>
-                <th colspan="4"><b>Voyelles</b></th>
+                <th colSpan="4"><b>Voyelles</b></th>
               </tr>
               {Object.entries(alphabetFrezo.voyelles).map(([key, value]) => {
                 const element = formatString(
                   value.exemples[0] + ", " + value.exemples[1]
                 );
-                console.log(element);
                 return (
-                  <tr key={key}>
+                  <tr key={key + value}>
                     <td className="frezo" style={{ fontSize: "32px" }}>
                       {key}
                     </td>
@@ -44,7 +43,7 @@ const Chapter1 = () => {
                 );
               })}
               <tr>
-                <th colspan="4"><b>Consonnes</b></th>
+                <th colSpan="4"><b>Consonnes</b></th>
               </tr>
               {Object.entries(alphabetFrezo.consonnes).map(([key, value]) => (
                 <tr key={key}>
@@ -61,7 +60,7 @@ const Chapter1 = () => {
         </div>
       </article>
       <Exercice1 />
-    </div>
+    </>
   );
 };
 

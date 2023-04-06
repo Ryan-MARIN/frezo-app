@@ -47,7 +47,7 @@ const Exercice1 = () => {
   };
 
   return (
-    <div>
+    <>
       <h1>Exercice 1</h1>
       {currentSymbol && (
         <Stack alignItems={"center"}>
@@ -55,14 +55,12 @@ const Exercice1 = () => {
             {currentSymbol}
           </span>
           Cliquez sur le son correspondant à cette lettre :
-          <p>
-            <Grid columns={10} container spacing={1} justifyContent={"center"}>
-              {renderNumbers()}
-            </Grid>
-          </p>
+          <Grid columns={10} container spacing={1} justifyContent={"center"}>
+            {renderNumbers()}
+          </Grid>
         </Stack>
       )}
-    </div>
+    </>
   );
 };
 
