@@ -1,65 +1,81 @@
-import React from 'react';
+import React from "react";
+import AlphabetFrezo from "../../../ressources/alphabet-frezo.json";
+import { Grid, Tooltip } from "@mui/material";
+import { Stack } from "@mui/system";
+import formatString from "../../../helpers/formatString";
 
 const Exercice1 = () => {
-    const [currentSymbol, setCurrentSymbol] = React.useState({});
-    const phoneticData = [
-        {
-            symbol: "æ",
-            letter: "a",
-            example: "Avion",
-            audio: "/audio/a.mp3",
-        },
-        {
-            symbol: "o",
-            letter: "o",
-            audio: "/audio/a.mp3",
-        },
-        {
-            symbol: "e",
-            letter: "e",
-            audio: "/audio/a.mp3",
-        },
-        {
-            symbol: "dj",
-            letter: "je",
-            audio: "/audio/a.mp3",
-        },
-    ];
+  const [currentSymbol, setCurrentSymbol] = React.useState(null);
+  const [keyCurrentSymbol, setKeyCurrentSymbol] = React.useState(null);
+  const mergeVoyellesConsonnes = {
+    ...AlphabetFrezo["voyelles"],
+    ...AlphabetFrezo["consonnes"],
+  };
 
-    React.useEffect(() => {
-        generateRandomSymbol();
-    }, []);
+  const generateRandomSymbol = () => {
+    const keys = Object.keys(mergeVoyellesConsonnes);
+    const randomIndex = Math.floor(Math.random() * keys.length);
+    const randomKey = keys[randomIndex];
+    setKeyCurrentSymbol(randomKey);
+    const randomSymbol = mergeVoyellesConsonnes[randomKey];
+    setCurrentSymbol(randomSymbol);
+  };
 
-    const generateRandomSymbol = () => {
-        const index = Math.floor(Math.random() * phoneticData.length);
-        setCurrentSymbol(phoneticData[index]);
-    };
+  React.useEffect(() => {
+    generateRandomSymbol();
+  }, []);
 
-    const handleLetterClick = (letter) => {
-        if (letter === currentSymbol['letter']) {
-            alert("Correct!");
-            generateRandomSymbol();
-        } else {
-            alert("Incorrect. Try again!");
-        }
-    };
+  const handleLetterClick = (letter) => {
+    if (letter === currentSymbol["francais"][0]) {
+      alert("Correct!");
+      generateRandomSymbol();
+    } else {
+      alert("Incorrect. Try again!");
+    }
+  };
 
-    const renderLetters = () => {
-        return phoneticData.map((item, index) => (
-            <button key={index} onClick={() => handleLetterClick(item['letter'])}>
-                {item['letter']}
+  const renderSounds = () => {
+    const buttons = [];
+
+    Object.values(mergeVoyellesConsonnes).forEach((lettre, index) => {
+      buttons.push(
+        <Grid item key={index} xs={2} lg={1}>
+          <Tooltip
+            title={formatString(lettre['exemples'][0] + ", " + lettre['exemples'][1])}
+            arrow
+          >
+            <button
+              style={{ width: "100%", height: "100%" }}
+              onClick={() => handleLetterClick(lettre['francais'][0])}
+            >
+              {lettre['francais'][0]} <br /> ({lettre['phonetique'][0]})
             </button>
-        ));
-    };
+          </Tooltip>
+        </Grid>
+      );
+    });
 
-    return (
-        <div className="App">
-            <h1>Phonetic Learner</h1>
-            <p>Phonetic Symbol: {currentSymbol.symbol}</p>
-            <button>Play Audio</button>
-            <div>{renderLetters()}</div>
-        </div>
-    );
-}
+    return buttons;
+  };
+
+  return (
+    <>
+      <h1>Exercice 1</h1>
+      {currentSymbol && (
+        <Stack alignItems={"center"}>
+          <span className="frezo" style={{ fontSize: "100px" }}>
+            {keyCurrentSymbol}
+          </span>
+          Cliquez sur le son correspondant à cette lettre :
+          <p>
+            <Grid container spacing={1} justifyContent={"center"}>
+              {renderSounds()}
+            </Grid>
+          </p>
+        </Stack>
+      )}
+    </>
+  );
+};
 
 export default Exercice1;

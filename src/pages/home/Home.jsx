@@ -1,7 +1,6 @@
 import React from "react";
 import { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import Navigation from "./../../layout/drawer/Navigation";
 import { Card, Stack } from "@mui/material";
 
 const Home = () => {
@@ -29,7 +28,7 @@ const Home = () => {
       </Link>
       <Link to={"/learning"} style={{ color: "black", textDecoration: "none" }}>
         <Card sx={{p:1}}>
-          <b>Frézo Learning</b> — Apprennez le frézo à travers 5 chapitres de
+          <b>Frézo Learning</b> — Apprenez le frézo à travers 5 chapitres de
           cours et d'exercices.
         </Card>
       </Link>

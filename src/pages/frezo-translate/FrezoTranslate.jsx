@@ -9,8 +9,8 @@ const ipaToFrezo = (apiText) => {
   };
 
   // Conversions en frézo des lettres phonétiques françaises
-  for(let categorie in phonems){
-    for(let lettre in phonems[categorie]){
+  for (let categorie in phonems) {
+    for (let lettre in phonems[categorie]) {
       const find = lettre;
       const replace = phonems[categorie][lettre];
       apiText = replaceAll(apiText, find, replace);
@@ -19,10 +19,16 @@ const ipaToFrezo = (apiText) => {
 
   // Conversion en frézo des lettres phonétiques étrangères éventuelles
 
-  apiText = apiText.replace(/ã/g, "â").replace(/ʊ/g, "u").replace(/ɡ/g, "g");
+  apiText = apiText
+    .replace(/ã/g, "â")
+    .replace(/ʊ/g, "u")
+    .replace(/ɡ/g, "g")
+    .replace(/ò̃/g, "ô")
+    .replace(/ë̃/g, "ê")
+    .replace(/è̃/g, "ê");
 
   // Retrait des caractères phonétiques spéciaux
-  apiText = apiText.replace(/͡|ˈ|ˌ|ː|-|[\u0303]/g, "").replace(/-+/g, "-");
+  apiText = apiText.replace(/͡|ˈ|ˌ|ː|-/g, "").replace(/-+/g, "-");
 
   // Reproduction des traits-d'unions
   apiText = apiText.replace(/–/g, "-");
@@ -79,7 +85,9 @@ const FrezoTranslate = () => {
 
   return (
     <Stack spacing={2}>
-      <h1>Frezo Translate<div>Traduisez des phrases en frézo !</div></h1>
+      <h1>
+        Frezo Translate<div>Traduisez des phrases en frézo !</div>
+      </h1>
       <Stack>
         <div>Français : </div>
         <TextField
@@ -91,7 +99,7 @@ const FrezoTranslate = () => {
             setTextToTranslate(e.target.value);
             searchInfo(e.target.value);
           }}
-          sx={{bgcolor: "white"}}
+          sx={{ bgcolor: "white" }}
         />
       </Stack>
       <Stack>
@@ -106,7 +114,7 @@ const FrezoTranslate = () => {
             className: "frezo",
             readOnly: true,
           }}
-          sx={{bgcolor: "white"}}
+          sx={{ bgcolor: "white" }}
         />
       </Stack>
       <i>En phonétique : {ipaVersion}</i>
