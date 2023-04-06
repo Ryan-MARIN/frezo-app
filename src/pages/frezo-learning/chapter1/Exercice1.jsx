@@ -41,14 +41,14 @@ const Exercice1 = () => {
       buttons.push(
         <Grid item key={index} xs={2} lg={1}>
           <Tooltip
-            title={formatString(lettre.exemples[0] + ", " + lettre.exemples[1])}
+            title={formatString(lettre['exemples'][0] + ", " + lettre['exemples'][1])}
             arrow
           >
             <button
               style={{ width: "100%", height: "100%" }}
-              onClick={() => handleLetterClick(lettre.francais[0])}
+              onClick={() => handleLetterClick(lettre['francais'][0])}
             >
-              {lettre.francais[0]} <br /> ({lettre.phonetique[0]})
+              {lettre['francais'][0]} <br /> ({lettre['phonetique'][0]})
             </button>
           </Tooltip>
         </Grid>
