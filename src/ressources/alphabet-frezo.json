@@ -129,12 +129,12 @@
     },
     "D" : {
       "phonetique" : ["ð"],
-      "francais" : ["Le TH voisé en anglais"],
+      "francais" : ["th"],
       "exemples": ["mo<th>er", "<th>ey"]
     },
     "T" : {
       "phonetique" : ["θ"],
-      "francais" : ["Le TH sourd en anglais"],
+      "francais" : ["th"],
       "exemples": ["pa<th>way", "mou<th>"]
     },
     "m" : {
@@ -158,13 +158,13 @@
       "exemples": ["<r>aison", "<r>at"]
     },
     "L" : {
-      "phonetique" : ["r", "ɾ"],
-      "francais" : ["Le R roulé en espagnol, italien ou japonais"],
+      "phonetique" : ["ɾ", "r"],
+      "francais" : ["r"],
       "exemples": ["Ma<r>ghe<r>ita", "Saku<r>a"]
     },
     "R" : {
       "phonetique" : ["ɹ"],
-      "francais" : ["Le R anglais"],
+      "francais" : ["r"],
       "exemples": ["<r>eally", "mo<r>e"]
     },
     "h" : {

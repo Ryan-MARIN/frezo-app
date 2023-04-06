@@ -12,7 +12,7 @@ const Body = () => {
         flexGrow: 1,
         width: "100%",
         minWidth: "310px",
-        overflow: "overlay",
+        overflow: "auto",
         backgroundColor: "#FFFC",
         position: "inherit",
         top: "0px",
@@ -21,7 +21,6 @@ const Body = () => {
       }}
     >
       <div style={{
-        overflowY: "auto",
         padding: "32px", }}>
       <Outlet />
       </div>

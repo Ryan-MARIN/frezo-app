@@ -1,15 +1,46 @@
-import { Button, Stack } from "@mui/material";
+import { Button } from "@mui/material";
 import React from "react";
 import { NavLink } from "react-router-dom";
 
 const ChapterLayout = (props) => {
   return (
-    <Stack>
-      <NavLink to="/learning" style={{ textDecoration: "none" }}>
-        <Button sx={{bgcolor:"black", color:"white", borderRadius:'0px', '&:hover':{bgcolor:"white", color:"black"}}}>◄&nbsp;Retour</Button>
-      </NavLink>
+    <>
+      <div
+        style={{ display: "flex", flexDirection: "column", alignItems: "end" }}
+      >
+        <NavLink to="/learning" style={{ textDecoration: "none" }}>
+          <Button
+            sx={{
+              bgcolor: "black",
+              color: "white",
+              borderRadius: "0px",
+              "&:hover": { bgcolor: "white", color: "black" },
+              flexWrap: true,
+            }}
+          >
+            ◄&nbsp;Retour
+          </Button>
+        </NavLink>
+      </div>
       {props.children}
-    </Stack>
+      <div
+        style={{ display: "flex", flexDirection: "column", alignItems: "end" }}
+      >
+        <NavLink to="/learning" style={{ textDecoration: "none" }}>
+          <Button
+            sx={{
+              bgcolor: "black",
+              color: "white",
+              borderRadius: "0px",
+              "&:hover": { bgcolor: "white", color: "black" },
+              flexWrap: true,
+            }}
+          >
+            ◄&nbsp;Retour
+          </Button>
+        </NavLink>
+      </div>
+    </>
   );
 };
 
