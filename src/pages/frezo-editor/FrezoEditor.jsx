@@ -1,4 +1,4 @@
-import { Button, Checkbox, FormControlLabel } from "@mui/material";
+import { Button } from "@mui/material";
 import { Stack } from "@mui/system";
 import React, { useState, useEffect, useRef } from "react";
 import { useLocation } from "react-router";
@@ -10,8 +10,8 @@ function FrezoEditor() {
       .fill()
       .map(() => Array(7).fill(false))
   );
+
   const [eraseMode, setEraseMode] = useState(false);
-  const [cropMode, setCropMode] = useState(false);
   const [fileName, setFileName] = useState("");
   const location = useLocation();
   const [inputValue, setInputValue] = useState("");
@@ -27,12 +27,10 @@ function FrezoEditor() {
     const height = canvas.height;
     const cellSize = Math.floor(Math.min(width / 11, height / 7));
 
-    // Clear the canvas
     ctx.clearRect(0, 0, width, height);
-
-    // Draw the grid lines
     ctx.strokeStyle = "#000";
     ctx.lineWidth = 1;
+
     for (let x = 0; x <= 11; x++) {
       ctx.beginPath();
       ctx.moveTo(x * cellSize, 0);
@@ -46,11 +44,10 @@ function FrezoEditor() {
       ctx.stroke();
     }
 
-    // Fill in the colored cells
     for (let x = 0; x < 11; x++) {
       for (let y = 0; y < 7; y++) {
         if (grid[x][y]) {
-          ctx.fillStyle = "#000"; // black
+          ctx.fillStyle = "#000";
           ctx.fillRect(x * cellSize, y * cellSize, cellSize, cellSize);
         }
       }
@@ -110,7 +107,6 @@ function FrezoEditor() {
     setFileName(event.target.value);
   }
 
-  
   function handleSave() {
     const columns = [];
     for (let x = 0; x < 11; x++) {
@@ -121,59 +117,17 @@ function FrezoEditor() {
       columns.push(column);
     }
 
-    if (cropMode) {
-      // Remove leading and trailing columns with only zeros
-      let start = 0;
-      let end = columns.length - 1;
+    const jsonData = JSON.stringify({ columns, inputValue });
+    const blob = new Blob([jsonData], { type: "application/json" });
+    const downloadLink = document.createElement("a");
 
-      while (start < end && columns[start].every((value) => value === 0)) {
-        start++;
-      }
-
-      while (end > start && columns[end].every((value) => value === 0)) {
-        end--;
-      }
-
-      const filteredColumns = columns.slice(start, end + 1);
-
-      // Convert filteredColumns to JSON
-      const jsonData = JSON.stringify(filteredColumns);
-
-      // Create a Blob with the JSON data
-      const blob = new Blob([jsonData], { type: "application/json" });
-
-      // Create a download link element
-      const downloadLink = document.createElement("a");
-      downloadLink.href = URL.createObjectURL(blob);
-      downloadLink.download = fileName + ".json";
-      downloadLink.style.display = "none";
-      document.body.appendChild(downloadLink);
-
-      // Trigger the download link
-      downloadLink.click();
-
-      // Clean up the download link element
-      document.body.removeChild(downloadLink);
-    } else {
-      // Convert columns to JSON
-      const jsonData = JSON.stringify({ columns, inputValue });
-
-      // Create a Blob with the JSON data
-      const blob = new Blob([jsonData], { type: "application/json" });
-
-      // Create a download link element
-      const downloadLink = document.createElement("a");
-      downloadLink.href = URL.createObjectURL(blob);
-      downloadLink.download = fileName + ".json";
-      downloadLink.style.display = "none";
-      document.body.appendChild(downloadLink);
-      downloadLink.download = `${fileName}.json`;
-      // Trigger the download link
-      downloadLink.click();
-
-      // Clean up the download link element
-      document.body.removeChild(downloadLink);
-    }
+    downloadLink.href = URL.createObjectURL(blob);
+    downloadLink.download = fileName + ".json";
+    downloadLink.style.display = "none";
+    document.body.appendChild(downloadLink);
+    downloadLink.download = `${fileName}.json`;
+    downloadLink.click();
+    document.body.removeChild(downloadLink);
   }
 
   function handleFileSelect(event) {
@@ -191,7 +145,7 @@ function FrezoEditor() {
       }
     };
     reader.readAsText(file);
-    setFileName(file.name);
+    setFileName(file.name.replace(/\.json$/, ''));
   }
 
   return (
@@ -213,23 +167,25 @@ function FrezoEditor() {
           onMouseDown={handleMouseDown}
           onMouseUp={handleMouseUp}
           onMouseMove={handleMouseMove}
-          style={{backgroundColor:"white"}}
+          style={{ backgroundColor: "white" }}
         />
-        <Stack spacing={1} alignItems={"center"} sx={{ p: 2 }}>
+        <Stack spacing={1} 
+        alignItems={"center"} 
+        sx={{ p: 2 }
+        }>
           <Stack direction={"row"} spacing={2}>
-            <Button variant="contained" type="radio" onClick={handleReset}>
-              Tout effacer
+            <Button 
+            variant="contained" 
+            type="radio" 
+            onClick={handleReset}
+            >
+            Tout effacer
             </Button>
-            <Button variant="contained" onClick={handleErase}>
-              {eraseMode ? "Dessiner" : "Gommer"}
+            <Button 
+            variant="contained" 
+            onClick={handleErase}>
+            {eraseMode ? "Dessiner" : "Gommer"}
             </Button>
-            <FormControlLabel control={<Checkbox
-              checked={cropMode}
-              onChange={(event) => setCropMode(event.target.checked)}
-              inputProps={{ 'aria-label': 'controlled' }}
-              label="End"
-              />
-            } label="Crop mode" />
           </Stack>
           <label htmlFor="inputId">Signification de la lettre :</label>
           <input
@@ -248,7 +204,11 @@ function FrezoEditor() {
               value={fileName}
               onChange={handleFileNameChange}
             />
-            <Button variant="contained" color="success" onClick={handleSave}>
+            <Button 
+            variant="contained" 
+            color="success" 
+            onClick={handleSave}
+            >
               Enregistrer
             </Button>
           </Stack>
@@ -256,7 +216,12 @@ function FrezoEditor() {
           <div />
           Importer :
           <Stack spacing={1} alignItems={"center"}>
-            <input style={{backgroundColor:"white"}} type="file" accept=".json" onChange={handleFileSelect} />
+            <input 
+            style={{ backgroundColor: "white" }} 
+            type="file" 
+            accept=".json" 
+            onChange={handleFileSelect} 
+            />
             <div>
               {fileName ? `Selected file: ${fileName}` : "No file selected"}
             </div>
