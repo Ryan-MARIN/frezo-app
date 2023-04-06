@@ -8,7 +8,6 @@ const ipaToFrezo = (apiText) => {
     return str.replace(new RegExp(find, "g"), replace);
   };
 
-  // Conversions en frézo des lettres phonétiques françaises
   for (let categorie in phonems) {
     for (let lettre in phonems[categorie]) {
       const find = lettre;
@@ -16,8 +15,6 @@ const ipaToFrezo = (apiText) => {
       apiText = replaceAll(apiText, find, replace);
     }
   }
-
-  // Conversion en frézo des lettres phonétiques étrangères éventuelles
 
   apiText = apiText
     .replace(/ã/g, "â")
@@ -27,10 +24,8 @@ const ipaToFrezo = (apiText) => {
     .replace(/ë̃/g, "ê")
     .replace(/è̃/g, "ê");
 
-  // Retrait des caractères phonétiques spéciaux
   apiText = apiText.replace(/͡|ˈ|ˌ|ː|-/g, "").replace(/-+/g, "-");
 
-  // Reproduction des traits-d'unions
   apiText = apiText.replace(/–/g, "-");
 
   return apiText;
