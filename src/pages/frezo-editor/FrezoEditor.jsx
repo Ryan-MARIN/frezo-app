@@ -10,9 +10,11 @@ function FrezoEditor() {
       .fill()
       .map(() => Array(7).fill(false))
   );
+
   const [eraseMode, setEraseMode] = useState(false);
   const [fileName, setFileName] = useState("");
   const location = useLocation();
+  const [inputValue, setInputValue] = useState("");
 
   useEffect(() => {
     document.title = `Frézo Editor`;
@@ -25,12 +27,10 @@ function FrezoEditor() {
     const height = canvas.height;
     const cellSize = Math.floor(Math.min(width / 11, height / 7));
 
-    // Clear the canvas
     ctx.clearRect(0, 0, width, height);
-
-    // Draw the grid lines
     ctx.strokeStyle = "#000";
     ctx.lineWidth = 1;
+
     for (let x = 0; x <= 11; x++) {
       ctx.beginPath();
       ctx.moveTo(x * cellSize, 0);
@@ -44,11 +44,10 @@ function FrezoEditor() {
       ctx.stroke();
     }
 
-    // Fill in the colored cells
     for (let x = 0; x < 11; x++) {
       for (let y = 0; y < 7; y++) {
         if (grid[x][y]) {
-          ctx.fillStyle = "#000"; // black
+          ctx.fillStyle = "#000";
           ctx.fillRect(x * cellSize, y * cellSize, cellSize, cellSize);
         }
       }
@@ -118,37 +117,16 @@ function FrezoEditor() {
       columns.push(column);
     }
 
-    // Remove leading and trailing columns with only zeros
-    let start = 0;
-    let end = columns.length - 1;
-
-    while (start < end && columns[start].every((value) => value === 0)) {
-      start++;
-    }
-
-    while (end > start && columns[end].every((value) => value === 0)) {
-      end--;
-    }
-
-    const filteredColumns = columns.slice(start, end + 1);
-
-    // Convert filteredColumns to JSON
-    const jsonData = JSON.stringify(filteredColumns);
-
-    // Create a Blob with the JSON data
+    const jsonData = JSON.stringify({ columns, inputValue });
     const blob = new Blob([jsonData], { type: "application/json" });
-
-    // Create a download link element
     const downloadLink = document.createElement("a");
+
     downloadLink.href = URL.createObjectURL(blob);
-    downloadLink.download = fileName + ".json"; // Modification
+    downloadLink.download = fileName + ".json";
     downloadLink.style.display = "none";
     document.body.appendChild(downloadLink);
-
-    // Trigger the download link
+    downloadLink.download = `${fileName}.json`;
     downloadLink.click();
-
-    // Clean up the download link element
     document.body.removeChild(downloadLink);
   }
 
@@ -156,20 +134,18 @@ function FrezoEditor() {
     const file = event.target.files[0];
     const reader = new FileReader();
     reader.onload = (event) => {
-      const jsonData = event.target.result;
-      const data = JSON.parse(jsonData);
-      const newGrid = Array(11)
-        .fill()
-        .map(() => Array(7).fill(false));
-      for (let x = 0; x < data.length && x < 11; x++) {
-        for (let y = 0; y < data[x].length && y < 7; y++) {
-          newGrid[x][y] = data[x][y] === 1;
-        }
+      const json = JSON.parse(event.target.result);
+      if (json.columns) {
+        setGrid(
+          json.columns.map((column) =>
+            column.map((value) => (value === 1 ? true : false))
+          )
+        );
+        setInputValue(json.inputValue);
       }
-      setGrid(newGrid);
     };
     reader.readAsText(file);
-    setFileName(file.name);
+    setFileName(file.name.replace(/\.json$/, ''));
   }
 
   return (
@@ -191,17 +167,33 @@ function FrezoEditor() {
           onMouseDown={handleMouseDown}
           onMouseUp={handleMouseUp}
           onMouseMove={handleMouseMove}
-          style={{backgroundColor:"white"}}
+          style={{ backgroundColor: "white" }}
         />
-        <Stack spacing={1} alignItems={"center"} sx={{ p: 2 }}>
+        <Stack spacing={1} 
+        alignItems={"center"} 
+        sx={{ p: 2 }
+        }>
           <Stack direction={"row"} spacing={2}>
-            <Button variant="contained" type="radio" onClick={handleReset}>
-              Tout effacer
+            <Button 
+            variant="contained" 
+            type="radio" 
+            onClick={handleReset}
+            >
+            Tout effacer
             </Button>
-            <Button variant="contained" onClick={handleErase}>
-              {eraseMode ? "Dessiner" : "Gommer"}
+            <Button 
+            variant="contained" 
+            onClick={handleErase}>
+            {eraseMode ? "Dessiner" : "Gommer"}
             </Button>
           </Stack>
+          <label htmlFor="inputId">Signification de la lettre :</label>
+          <input
+            type="text"
+            id="inputId"
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+          />
           <div />
           <div />
           Sauvegarder :
@@ -212,7 +204,11 @@ function FrezoEditor() {
               value={fileName}
               onChange={handleFileNameChange}
             />
-            <Button variant="contained" color="success" onClick={handleSave}>
+            <Button 
+            variant="contained" 
+            color="success" 
+            onClick={handleSave}
+            >
               Enregistrer
             </Button>
           </Stack>
@@ -220,7 +216,12 @@ function FrezoEditor() {
           <div />
           Importer :
           <Stack spacing={1} alignItems={"center"}>
-            <input style={{backgroundColor:"white"}} type="file" accept=".json" onChange={handleFileSelect} />
+            <input 
+            style={{ backgroundColor: "white" }} 
+            type="file" 
+            accept=".json" 
+            onChange={handleFileSelect} 
+            />
             <div>
               {fileName ? `Selected file: ${fileName}` : "No file selected"}
             </div>
