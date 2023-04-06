@@ -1,3 +1,5 @@
+import { Button, Checkbox, FormControlLabel } from "@mui/material";
+import { Stack } from "@mui/system";
 import React, { useState, useEffect, useRef } from "react";
 import { useLocation } from "react-router";
 
@@ -9,8 +11,10 @@ function FrezoEditor() {
       .map(() => Array(7).fill(false))
   );
   const [eraseMode, setEraseMode] = useState(false);
+  const [cropMode, setCropMode] = useState(false);
   const [fileName, setFileName] = useState("");
   const location = useLocation();
+  const [inputValue, setInputValue] = useState("");
 
   useEffect(() => {
     document.title = `Frézo Editor`;
@@ -106,6 +110,7 @@ function FrezoEditor() {
     setFileName(event.target.value);
   }
 
+  
   function handleSave() {
     const columns = [];
     for (let x = 0; x < 11; x++) {
@@ -116,55 +121,74 @@ function FrezoEditor() {
       columns.push(column);
     }
 
-    // Remove leading and trailing columns with only zeros
-    let start = 0;
-    let end = columns.length - 1;
+    if (cropMode) {
+      // Remove leading and trailing columns with only zeros
+      let start = 0;
+      let end = columns.length - 1;
 
-    while (start < end && columns[start].every((value) => value === 0)) {
-      start++;
+      while (start < end && columns[start].every((value) => value === 0)) {
+        start++;
+      }
+
+      while (end > start && columns[end].every((value) => value === 0)) {
+        end--;
+      }
+
+      const filteredColumns = columns.slice(start, end + 1);
+
+      // Convert filteredColumns to JSON
+      const jsonData = JSON.stringify(filteredColumns);
+
+      // Create a Blob with the JSON data
+      const blob = new Blob([jsonData], { type: "application/json" });
+
+      // Create a download link element
+      const downloadLink = document.createElement("a");
+      downloadLink.href = URL.createObjectURL(blob);
+      downloadLink.download = fileName + ".json";
+      downloadLink.style.display = "none";
+      document.body.appendChild(downloadLink);
+
+      // Trigger the download link
+      downloadLink.click();
+
+      // Clean up the download link element
+      document.body.removeChild(downloadLink);
+    } else {
+      // Convert columns to JSON
+      const jsonData = JSON.stringify({ columns, inputValue });
+
+      // Create a Blob with the JSON data
+      const blob = new Blob([jsonData], { type: "application/json" });
+
+      // Create a download link element
+      const downloadLink = document.createElement("a");
+      downloadLink.href = URL.createObjectURL(blob);
+      downloadLink.download = fileName + ".json";
+      downloadLink.style.display = "none";
+      document.body.appendChild(downloadLink);
+      downloadLink.download = `${fileName}.json`;
+      // Trigger the download link
+      downloadLink.click();
+
+      // Clean up the download link element
+      document.body.removeChild(downloadLink);
     }
-
-    while (end > start && columns[end].every((value) => value === 0)) {
-      end--;
-    }
-
-    const filteredColumns = columns.slice(start, end + 1);
-
-    // Convert filteredColumns to JSON
-    const jsonData = JSON.stringify(filteredColumns);
-
-    // Create a Blob with the JSON data
-    const blob = new Blob([jsonData], { type: "application/json" });
-
-    // Create a download link element
-    const downloadLink = document.createElement("a");
-    downloadLink.href = URL.createObjectURL(blob);
-    downloadLink.download = fileName + ".json"; // Modification
-    downloadLink.style.display = "none";
-    document.body.appendChild(downloadLink);
-
-    // Trigger the download link
-    downloadLink.click();
-
-    // Clean up the download link element
-    document.body.removeChild(downloadLink);
   }
 
   function handleFileSelect(event) {
     const file = event.target.files[0];
     const reader = new FileReader();
     reader.onload = (event) => {
-      const jsonData = event.target.result;
-      const data = JSON.parse(jsonData);
-      const newGrid = Array(11)
-        .fill()
-        .map(() => Array(7).fill(false));
-      for (let x = 0; x < data.length && x < 11; x++) {
-        for (let y = 0; y < data[x].length && y < 7; y++) {
-          newGrid[x][y] = data[x][y] === 1;
-        }
+      const json = JSON.parse(event.target.result);
+      if (json.columns) {
+        setGrid(
+          json.columns.map((column) =>
+            column.map((value) => (value === 1 ? true : false))
+          )
+        );
+        setInputValue(json.inputValue);
       }
-      setGrid(newGrid);
     };
     reader.readAsText(file);
     setFileName(file.name);
@@ -173,9 +197,15 @@ function FrezoEditor() {
   return (
     <>
       <h1>
-        Frezo Editor<div>Créez vos propres lettres frézo !</div>
+        Frézo Editor<div>Créez vos propres lettres frézo !</div>
       </h1>
-      <div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
         <canvas
           ref={canvasRef}
           width={550}
@@ -183,23 +213,55 @@ function FrezoEditor() {
           onMouseDown={handleMouseDown}
           onMouseUp={handleMouseUp}
           onMouseMove={handleMouseMove}
+          style={{backgroundColor:"white"}}
         />
-        <button type="radio" onClick={handleReset}>
-          Reset
-        </button>
-        <button onClick={handleErase}>Erase</button>
-        <input
-          type="text"
-          placeholder="Nom du fichier.json"
-          value={fileName}
-          onChange={handleFileNameChange}
-        />
-        <button onClick={handleSave}>Save</button>
-
-        <input type="file" accept=".json" onChange={handleFileSelect} />
-        <div>
-          {fileName ? `Selected file: ${fileName}` : "No file selected"}
-        </div>
+        <Stack spacing={1} alignItems={"center"} sx={{ p: 2 }}>
+          <Stack direction={"row"} spacing={2}>
+            <Button variant="contained" type="radio" onClick={handleReset}>
+              Tout effacer
+            </Button>
+            <Button variant="contained" onClick={handleErase}>
+              {eraseMode ? "Dessiner" : "Gommer"}
+            </Button>
+            <FormControlLabel control={<Checkbox
+              checked={cropMode}
+              onChange={(event) => setCropMode(event.target.checked)}
+              inputProps={{ 'aria-label': 'controlled' }}
+              label="End"
+              />
+            } label="Crop mode" />
+          </Stack>
+          <label htmlFor="inputId">Signification de la lettre :</label>
+          <input
+            type="text"
+            id="inputId"
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+          />
+          <div />
+          <div />
+          Sauvegarder :
+          <Stack direction={"row"}>
+            <input
+              type="text"
+              placeholder="Nom du fichier.json"
+              value={fileName}
+              onChange={handleFileNameChange}
+            />
+            <Button variant="contained" color="success" onClick={handleSave}>
+              Enregistrer
+            </Button>
+          </Stack>
+          <div />
+          <div />
+          Importer :
+          <Stack spacing={1} alignItems={"center"}>
+            <input style={{backgroundColor:"white"}} type="file" accept=".json" onChange={handleFileSelect} />
+            <div>
+              {fileName ? `Selected file: ${fileName}` : "No file selected"}
+            </div>
+          </Stack>
+        </Stack>
       </div>
     </>
   );
