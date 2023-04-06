@@ -1,15 +1,40 @@
 .info{
     background-color:lightskyblue;
+    padding: 8px;
+    border-radius: 16px;
 }
 
 .warning{
     background-color:khaki;
+    padding: 8px;
+    border-radius: 16px;
 }
 
 .success{
     background-color: greenyellow;
+    padding: 8px;
+    border-radius: 16px;
 }
 
 .error{
     background-color: lightcoral;
+    padding: 8px;
+    border-radius: 16px;
+}
+
+
+thead * {
+    background-color: black;
+    color:white;
+    padding: 8px;
+    font-weight: normal;
+}
+
+thead :first-child {
+    font-weight: bold;
+}
+
+tbody tr td, tbody tr th {
+    background-color: white;
+    padding: 8px;
 }
